@@ -1,37 +1,49 @@
-﻿using Manicure.DataAccess.Abstract;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using Manicure.DataAccess.Abstract;
 
 namespace Manicure.DataAccess.Concrete
 {
     public class Repository<T> : IRepository<T> where T : class
     {
+        private readonly DbContext _context;
+        private readonly DbSet<T> _dbSet;
+
+        public Repository(DbContext context)
+        {
+            _context = context;
+            _dbSet = context.Set<T>();
+        }
+
         public void Create(T entity)
         {
-            throw new System.NotImplementedException();
+            _dbSet.Add(entity);
         }
 
-        public void Delete(int id)
+        public void Delete(T entity)
         {
-            throw new System.NotImplementedException();
+            _dbSet.Remove(entity);
         }
 
-        public bool Exists(System.Linq.Expressions.Expression<System.Func<T, bool>> filter)
+        public bool Any(System.Linq.Expressions.Expression<System.Func<T, bool>> filter)
         {
-            throw new System.NotImplementedException();
+            return _dbSet.Any(filter);
         }
 
-        public System.Collections.Generic.IEnumerable<T> Get(System.Linq.Expressions.Expression<System.Func<T, bool>> filter)
+        public IEnumerable<T> Get(System.Linq.Expressions.Expression<System.Func<T, bool>> filter)
         {
-            throw new System.NotImplementedException();
+            return _dbSet.Where(filter);
         }
 
         public T GetFirst(System.Linq.Expressions.Expression<System.Func<T, bool>> filter)
         {
-            throw new System.NotImplementedException();
+            return _dbSet.FirstOrDefault(filter);
         }
 
         public void Update(T entity)
         {
-            throw new System.NotImplementedException();
+            _context.Entry(entity).State = EntityState.Modified;
         }
     }
 }

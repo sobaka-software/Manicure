@@ -10,9 +10,15 @@ namespace Manicure.Common.Domain
 
         public int ClientId { get; set; }
 
+        public Client Client { get; set; }
+
         public int ScheduleId { get; set; }
 
+        public Schedule Schedule { get; set; }
+
         public int ProcedureId { get; set; }
+
+        public Procedure Procedure { get; set; }
 
         public DateTime StartTime { get; set; }
     }

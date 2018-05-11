@@ -59,5 +59,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Manicure.Common\Manicure.Common.csproj">
+      <Project>{43C7E39E-64CB-45BD-9A0B-E7B5C19E3C52}</Project>
+      <Name>Manicure.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

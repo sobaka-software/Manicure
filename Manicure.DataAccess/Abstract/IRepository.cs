@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Runtime.InteropServices;
 
 namespace Manicure.DataAccess.Abstract
 {
@@ -11,12 +10,12 @@ namespace Manicure.DataAccess.Abstract
 
         void Update(T entity);
 
-        void Delete(int id);
+        void Delete(T entity);
 
         IEnumerable<T> Get(Expression<Func<T, bool>> filter);
 
         T GetFirst(Expression<Func<T, bool>> filter);
 
-        bool Exists(Expression<Func<T, bool>> filter);
+        bool Any(Expression<Func<T, bool>> filter);
     }
 }

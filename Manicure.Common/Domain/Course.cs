@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Manicure.Common.Domain
 {
@@ -14,6 +15,8 @@ namespace Manicure.Common.Domain
 
         public int MasterId { get; set; }
 
+        public Master Master { get; set; }
+
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }
@@ -21,5 +24,7 @@ namespace Manicure.Common.Domain
         public bool HasDiploma { get; set; }
 
         public int MaxNumberOfPeople { get; set; }
+
+        public ICollection<CourseEntry> CourseEntries { get; set; }
     }
 }

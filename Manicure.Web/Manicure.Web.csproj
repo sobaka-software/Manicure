@@ -154,6 +154,16 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Manicure.Common\Manicure.Common.csproj">
+      <Project>{43C7E39E-64CB-45BD-9A0B-E7B5C19E3C52}</Project>
+      <Name>Manicure.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manicure.DataAccess\Manicure.DataAccess.csproj">
+      <Project>{00D5FB1E-95C8-4DDE-8833-3C9844BD6ACF}</Project>
+      <Name>Manicure.DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

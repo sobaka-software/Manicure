@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using Manicure.Common.Domain;
 
 namespace Manicure.DataAccess.Context
 {
@@ -6,6 +7,8 @@ namespace Manicure.DataAccess.Context
     {
         protected override void Seed(ManicureContext context)
         {
+            context.Clients.Add(new Client());
+            context.SaveChanges();
             base.Seed(context);
         }
     }

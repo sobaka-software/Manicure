@@ -6,6 +6,8 @@
 
         public int MasterId { get; set; }
 
+        public Master Master { get; set; }
+
         public byte[] ScanDiploma { get; set; }
     }
 }
