@@ -24,7 +24,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active">@Html.ActionLink("Главная", "Main", "Home")</li>
+                <li>@Html.ActionLink("Главная", "Main", "Home")</li>
                 <li>@Html.ActionLink("Прайс", "Get", "Price")</li>
                 <li>@Html.ActionLink("Мастера", "Get", "Masters")</li>
                 <li>@Html.ActionLink("Фото", "Get", "Photo")</li>
@@ -45,6 +45,11 @@
 </div>
 
 
-
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('ul.nav.navbar-nav').find('a[href="' + location.pathname + '"]')
+            .closest('li').addClass('active');
+    });
+</script>
 </body>
 </html>

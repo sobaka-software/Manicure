@@ -3,6 +3,9 @@
     margin:0 ;
     padding:0;
 }
+ul li{
+    list-style:none;
+}
 
 .container.body-content {
     font: 16px 'Open Sans', sans-serif;
@@ -32,12 +35,18 @@
     float:none;
 }
 /* header styles done */
+
+
 .main {
-    margin-top:60px;
+    margin-top:70px;
 }
 .main-title {
     margin-bottom:30px;
 }
+/* header done */
+
+/* registrationForm styles */
+
 .timeBlock .form-control {
     width:45%;
     float:left;
@@ -51,7 +60,6 @@
     border-radius:3px;
     padding:15px;
 }
-
 .registrationForm input, .registrationForm  option,.registrationForm  select{
     font-weight:bold;
 }
@@ -72,7 +80,22 @@
     color:#d07038;
     margin:0;
 } 
+/* registrationForm styles done */
 
+/* priceList styles */
+
+
+.priceList li {
+    display:block;
+    padding:5px 0;
+    color:#333;
+}
+
+
+/* priceList styles done*/
+
+
+/* footer styles */
 .footer {
     color:#333;
     position:absolute;
