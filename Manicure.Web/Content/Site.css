@@ -1,18 +1,80 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿
+* {
+    margin:0 ;
+    padding:0;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.container.body-content {
+    font: 16px 'Open Sans', sans-serif;
+    color:#d07038;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+/* header styles */
+.navbar-default .navbar-nav.nav > li > a {
+    border-right: 1px solid #d57d4b;
+    color:#d07038;
+    padding: 15px 35px;
+    font-weight:bold;
+}
+.navbar-default .navbar-nav.nav > li:last-child > a {
+    border-right: none;
+}
+.navbar-default .navbar-nav.nav > li:hover > a,
+.navbar-default .navbar-nav > li.active > a,
+.navbar-default .navbar-nav > li.active > a:focus,
+.navbar-default .navbar-nav > li.active > a:hover {
+    background:#f6caae;
+    color:#d07038;
+
+}
+.nav.navbar-nav {
+
+    float:none;
+}
+/* header styles done */
+.main {
+    margin-top:60px;
+}
+.main-title {
+    margin-bottom:30px;
+}
+.timeBlock .form-control {
+    width:45%;
+    float:left;
+}
+.timeBlock .form-control:first-child {
+    margin-right:10%;
+}
+.registrationForm {
+    background:#fcefec;
+    border: 1px solid #d57d4b;
+    border-radius:3px;
+    padding:15px;
 }
 
+.registrationForm input, .registrationForm  option,.registrationForm  select{
+    font-weight:bold;
+}
+.registrationForm option {
+   padding:8px 0;
+}
+.registrationForm .btn {
+    width:100%;
+    font-weight:bold;
+    border:none;
+    color: #333;
+}
+.registrationForm .btn-default:hover {
+    color: #333;
+    border-color: none;
+}
+.form-title {
+    color:#d07038;
+    margin:0;
+} 
+
+.footer {
+    color:#333;
+    position:absolute;
+    bottom:0;
+}
