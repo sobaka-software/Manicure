@@ -2,10 +2,11 @@
 using System.Web;
 using System.Web.Security;
 using Manicure.BusinessLogic.Services.Abstract;
+using Manicure.Common.Domain;
 
 namespace Manicure.BusinessLogic.Authentication
 {
-    public class AuthProvider
+    public class AuthProvider : IAuthProvider
     {
         private readonly IUserService _userService;
         public AuthProvider(IUserService userService)
@@ -13,7 +14,7 @@ namespace Manicure.BusinessLogic.Authentication
             _userService = userService;
         }
 
-        public bool Authenticate(Login login)
+        public User Authenticate(Login login)
         {
             var user = _userService.GetBy(login.UserLogin, login.Password);
 
@@ -29,9 +30,10 @@ namespace Manicure.BusinessLogic.Authentication
                 };
                 HttpContext.Current.Response.Cookies.Add(cookie);
 
-                return true;
+                return user;
             }
-            return false;
+
+            return null;
         }
 
         public void Deauthenticate()
