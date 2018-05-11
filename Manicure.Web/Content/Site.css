@@ -40,7 +40,7 @@ ul li {
 
     .nav.navbar-nav li {
         display: table-cell;
-        float:none;
+        float: none;
     }
 /* header styles done */
 
@@ -127,6 +127,25 @@ ul li {
 
 /* mastersList styles done*/
 
+/* articleList styles */
+
+.articleList a {
+    display: block;
+    font: bold 20px/1.5 "Open Sans",sans-serif;
+    color: #333;
+    text-decoration: none;
+}
+
+    .articleList a:hover {
+        color: #d07038;
+        transition: all 0.3s;
+        text-decoration: none;
+    }
+/* articleList styles done */
+
+
+
+
 /* footer styles */
 .footer {
     color: #333;
@@ -140,16 +159,28 @@ ul li {
     .navbar-default .navbar-nav.nav > li > a {
         padding: 15px 25px;
     }
-
 }
+
 @media (max-width: 991px) {
     .navbar-default .navbar-nav.nav > li > a {
         padding: 15px;
     }
+   
 }
 
 @media(max-width:767px) {
+     .navbar-default .navbar-nav.nav > li > a {
+        padding: 8px;
+    }
     .mastersList .col-lg-6 {
         margin-bottom: 20px;
+    }
+
+    .nav.navbar-nav li, .nav.navbar-nav {
+        display: block;
+    }
+
+    .navbar-default .navbar-nav.nav > li > a {
+        border-right: 0;
     }
 }
