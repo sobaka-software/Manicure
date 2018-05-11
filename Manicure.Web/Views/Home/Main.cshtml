@@ -3,7 +3,60 @@
     ViewBag.Title = "Main";
 }
 
-<h2>Main</h2>
+<main class="main">
+    <div class="container">
+        <h1 class="main-title text-center">Добро пожаловать в мир красивых ногтей</h1>
 
-/*******/
-
+        <form action="#" class="registrationForm col-sm-6 col-md-4">
+            <div class="formInner">
+                <div class="form-group">
+                    <h3 class="form-title">Онлайн запись</h3>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="fullname" placeholder="Ваше ФИО" name="fullname">
+                </div>
+                <div class="form-group timeBlock clearfix">
+                    <input type="email" class="form-control" id="date" placeholder="Дата" name="date">
+                    <input type="text" class="form-control" id="time" placeholder="Время" name="time">
+                </div>
+                <div class="form-group">
+                    <select class="form-control selectManipulation">
+                        <option>Выберите процедуру:</option>
+                        <option>1. Комбинированный маникюр</option>
+                        <option>2. Однотонное покрытие</option>
+                        <option>3. Двойная база</option>
+                        <option>4. Укрепление акриловой пудрой</option>
+                        <option>5. Укрепление гелием</option>
+                        <option>6. Ремонт ногтя</option>
+                        <option>7. Матовый эффект</option>
+                        <option>8. Добавление дизайна</option>
+                        <option>9. Французский дизайн, лунный</option>
+                        <option>10. Стемпинг</option>
+                        <option>11. Стразы сваровски</option>
+                        <option>12. Слайдеры</option>
+                        <option>13. Зеркальная втирка</option>
+                        <option>14. Снятие гель-лака</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="form-control">
+                        <option>Выберите мастера:</option>
+                        <option>1. Иванова Ольга</option>
+                        <option>2. Петрова Анна</option>
+                        <option>3. Сидорова Марина</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="phone" placeholder="Ваш телефон:" name="phone">
+                </div>
+                <button type="submit" class="btn btn-warning">Записаться</button>
+            </div>
+        </form>
+        <div class="col-md-4 col-sm-6">
+            <img src="#" alt="Alternate Text" />
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <p>Информация о салоне</p>
+        </div>
+    </div>
+</main>
