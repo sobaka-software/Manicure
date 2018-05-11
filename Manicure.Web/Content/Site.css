@@ -1,103 +1,155 @@
 ﻿
 * {
-    margin:0 ;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
-ul li{
-    list-style:none;
+
+ul li {
+    list-style: none;
 }
 
 .container.body-content {
     font: 16px 'Open Sans', sans-serif;
-    color:#d07038;
+    color: #d07038;
 }
 
 /* header styles */
 .navbar-default .navbar-nav.nav > li > a {
     border-right: 1px solid #d57d4b;
-    color:#d07038;
+    color: #d07038;
     padding: 15px 35px;
-    font-weight:bold;
+    font-weight: bold;
 }
+
 .navbar-default .navbar-nav.nav > li:last-child > a {
     border-right: none;
 }
+
 .navbar-default .navbar-nav.nav > li:hover > a,
 .navbar-default .navbar-nav > li.active > a,
 .navbar-default .navbar-nav > li.active > a:focus,
 .navbar-default .navbar-nav > li.active > a:hover {
-    background:#f6caae;
-    color:#d07038;
-
+    background: #f6caae;
+    color: #d07038;
 }
+
 .nav.navbar-nav {
-
-    float:none;
+    display: table;
+    float: none;
 }
+
+    .nav.navbar-nav li {
+        display: table-cell;
+        float:none;
+    }
 /* header styles done */
 
 
 .main {
-    margin-top:70px;
+    margin-top: 70px;
+    min-height: calc(100vh - 150px);
 }
+
 .main-title {
-    margin-bottom:30px;
+    margin-bottom: 30px;
 }
 /* header done */
 
 /* registrationForm styles */
 
 .timeBlock .form-control {
-    width:45%;
-    float:left;
+    width: 45%;
+    float: left;
 }
-.timeBlock .form-control:first-child {
-    margin-right:10%;
-}
+
+    .timeBlock .form-control:first-child {
+        margin-right: 10%;
+    }
+
 .registrationForm {
-    background:#fcefec;
+    background: #fcefec;
     border: 1px solid #d57d4b;
-    border-radius:3px;
-    padding:15px;
+    border-radius: 3px;
+    padding: 15px;
 }
-.registrationForm input, .registrationForm  option,.registrationForm  select{
-    font-weight:bold;
-}
-.registrationForm option {
-   padding:8px 0;
-}
-.registrationForm .btn {
-    width:100%;
-    font-weight:bold;
-    border:none;
-    color: #333;
-}
-.registrationForm .btn-default:hover {
-    color: #333;
-    border-color: none;
-}
+
+    .registrationForm input, .registrationForm option, .registrationForm select {
+        font-weight: bold;
+    }
+
+    .registrationForm option {
+        padding: 8px 0;
+    }
+
+    .registrationForm .btn {
+        width: 100%;
+        font-weight: bold;
+        border: none;
+        color: #333;
+    }
+
+    .registrationForm .btn-default:hover {
+        color: #333;
+        border-color: none;
+    }
+
 .form-title {
-    color:#d07038;
-    margin:0;
-} 
+    color: #d07038;
+    margin: 0;
+}
 /* registrationForm styles done */
 
 /* priceList styles */
 
 
 .priceList li {
-    display:block;
-    padding:5px 0;
-    color:#333;
+    display: block;
+    padding: 5px 0;
+    color: #333;
 }
-
 
 /* priceList styles done*/
 
 
+/* mastersList styles */
+
+.mastersName {
+    color: #333;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.mastersDescription {
+    border: 1px solid #d57d4b;
+    padding: 10px;
+}
+
+
+/* mastersList styles done*/
+
 /* footer styles */
 .footer {
-    color:#333;
-    position:absolute;
-    bottom:0;
+    color: #333;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width: 1200px) {
+    .navbar-default .navbar-nav.nav > li > a {
+        padding: 15px 25px;
+    }
+
+}
+@media (max-width: 991px) {
+    .navbar-default .navbar-nav.nav > li > a {
+        padding: 15px;
+    }
+}
+
+@media(max-width:767px) {
+    .mastersList .col-lg-6 {
+        margin-bottom: 20px;
+    }
 }
