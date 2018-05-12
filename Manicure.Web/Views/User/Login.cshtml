@@ -3,5 +3,33 @@
     ViewBag.Title = "Login";
 }
 
-<h2>Login</h2>
+<main class="main">
+    <form action="#" class="loginForm col-xs-12 col-sm-6 col-md-6 col-lg-4">
+        <div class="form-group">
+            <label for="login">
+                Логин:
+            </label>
+            <input id="login" type="text" name="name" value="Введите логин" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="password">
+                Пароль:
+            </label>
+            <input id="password" type="text" name="name" value="Введите пароль" class="form-control">
+        </div>
+        <div class="form-group flex-container">
+            <input id="saveMe" type="checkbox" name="name" value="saveMe">
+            <label for="saveMe">
+                ЗАПОМНИТЬ
+            </label>
+            <input type="submit" class="btn-warning btn-md btn btnEnter" name="enter" value="ВХОД" />
+        </div>
+        <div class="form-group">
+            <p class="regBlock">
+                Ещё не зарегистированы?
+                <a href="~/Views/User/Register.cshtml" class="regLink">Зарегистрироваться</a>
+            </p>
+        </div>
+    </form>
+</main>
 

@@ -4,18 +4,22 @@
     margin: 0;
     padding: 0;
 }
+
 img {
-    max-width:100%;
-    height:auto;
+    max-width: 100%;
+    height: auto;
 }
+
 ul li {
     list-style: none;
 }
-ol {
-    list-style-type:decimal;
+
+ol li{
+    list-style-type: decimal;
 }
+
 .container.body-content {
-    font: 16px 'Open Sans', sans-serif;
+    /*  font: 16px 'Open Sans', sans-serif;*/
     color: #d07038;
 }
 
@@ -23,7 +27,6 @@ ol {
 .navbar-default .navbar-nav.nav > li > a {
     border-right: 1px solid #d57d4b;
     color: #d07038;
-    padding: 15px 35px;
     font-weight: bold;
 }
 
@@ -42,11 +45,13 @@ ol {
 .nav.navbar-nav {
     display: table;
     float: none;
+    width: 100%;
 }
 
     .nav.navbar-nav li {
         display: table-cell;
         float: none;
+        text-align: center;
     }
 /* header styles done */
 
@@ -72,32 +77,55 @@ ol {
         margin-right: 10%;
     }
 
-.registrationForm {
+.registrationForm,
+.loginForm,
+.registrNewForm,
+.reviewForm {
     background: #fcefec;
     border: 1px solid #d57d4b;
     border-radius: 3px;
     padding: 15px;
 }
 
-    .registrationForm input, .registrationForm option, .registrationForm select {
-        font-weight: bold;
+    .reviewForm textarea {
+        resize: none;
+        min-height: 150px;
     }
 
-    .registrationForm option {
-        padding: 8px 0;
+.main {
+    position: relative;
+}
+
+    .main .loginForm,
+    .main .registrNewForm,
+    .main .reviewForm {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
     }
 
-    .registrationForm .btn {
-        width: 100%;
-        font-weight: bold;
-        border: none;
-        color: #333;
+    .main .registrNewForm {
     }
 
-    .registrationForm .btn-default:hover {
-        color: #333;
-        border-color: none;
-    }
+.registrationForm input, .registrationForm option, .registrationForm select {
+    font-weight: bold;
+}
+
+.registrationForm option {
+    padding: 8px 0;
+}
+
+.registrationForm .btn {
+    width: 100%;
+    font-weight: bold;
+    border: none;
+}
+
+.registrationForm .btn-default:hover {
+    color: #333;
+    border-color: none;
+}
 
 .form-title {
     color: #d07038;
@@ -107,44 +135,54 @@ ol {
 
 /* priceList styles */
 
-.btnAddField {
-    min-width:150px;
+.btnAddField,
+.btnEnter {
+    min-width: 150px;
+}
+.priceList .row {
+    margin-bottom:10px;
+    color:#333;
 }
 .addField {
-    display:none;
-    margin-top:20px;
+    display: none;
+    margin-top: 20px;
+}
+.priceList li:after,
+.priceList li:before {
+    content:"";
+    display:table;
 }
 .priceList li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     color: #333;
-    overflow: hidden;
     padding-bottom: 10px;
 }
+
 .priceList p {
-    margin:0;
+    margin: 0;
+}
+.price-title {
+    margin-top:0;
 }
 /* priceList styles done*/
-
 /* mastersList styles */
-
 .mastersName {
     color: #333;
     padding: 0 0 10px 0;
     font-weight: bold;
-    margin:0;
+    margin: 0;
 }
+
 .masterItem {
-    margin-bottom:20px;
+    margin-bottom: 20px;
 }
 
 .mastersDescription {
     border: 1px solid #d57d4b;
     padding: 10px;
 }
+
 .mastersList {
-    margin-top:20px;
+    margin-top: 20px;
 }
 
 /* mastersList styles done*/
@@ -153,12 +191,15 @@ ol {
 .name-master {
     color: #333;
 }
+
 .gallery {
     margin-top: 30px;
 }
+
 .image-description {
     max-width: 300px;
 }
+
 .gallery div {
     text-align: center;
 }
@@ -166,14 +207,19 @@ ol {
 
 /* articleList styles */
 .articleItem {
-    padding-bottom:5px;
+    padding-bottom: 5px;
 }
+
 .articleList .articleLink {
     display: inline-block;
     font: bold 20px/1 "Open Sans",sans-serif;
     color: #333;
     text-decoration: none;
     word-wrap: break-word;
+}
+
+.articleList {
+    padding-top: 20px;
 }
 
     .articleList .articleLink:hover {
@@ -183,11 +229,23 @@ ol {
     }
 /* articleList styles done */
 
-
-
-
-/* footer styles */
-.footer {
+/* adress styles */
+.articleItem.row {
+    text-align:center;
+}
+.adress {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    color: #333;
+}
+    .adress a {
+        color: #333;
+    }
+    /* adress styles done */
+    /* footer styles */
+    .footer {
     color: #333;
     height: 80px;
     display: flex;
@@ -197,77 +255,167 @@ ol {
 
 /* price styles */
 .btn-holder {
-    display:inline-block;
-    padding-left:10px;
+    display: inline-block;
+    padding-left: 10px;
 }
-
 
 /* price styles done */
 
+/* login form style */
 
+/* registration form style */
+.regBlock {
+    font-size: 14px;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .flex-container input[type=checkbox] {
+        margin: 0;
+    }
+
+    .flex-container label {
+        padding: 0 25px 0 10px;
+        margin: 0;
+    }
+
+.regBlock a {
+    color: #333;
+    text-decoration: underline;
+}
+/* registration form style */
+
+
+/* login form style done*/
+
+
+
+/* registration form style */
+
+/* registration form style done */
 
 
 
 @media (max-width: 1200px) {
     .navbar-default .navbar-nav.nav > li > a {
-        padding: 15px 25px;
+        padding: 15px 15px;
     }
 }
 
 @media (max-width: 1024px) {
     .navbar-default .navbar-nav.nav > li > a {
-        padding: 15px;
+        padding: 15px 10px;
     }
+
     .mastersContainer h2 {
         font-size: 25px;
     }
-   .gallery .slick-next{
+
+    .gallery .slick-next {
         right: -25px;
-        z-index:100;
+        z-index: 100;
     }
+
     .gallery .slick-prev {
         left: -25px;
         z-index: 100;
     }
-
-@media(max-width:767px) {
-    .mastersName {
-        padding:15px 0;
-    }
-    .gallery .slick-next {
-        right: 0;
-    }
-    .imgMaster, .mastersName {
+    .btnAddBlock {
         text-align: center;
     }
-    .mastersContainer h2 {
-        font-size: 20px;
-    }
-    .gallery .slick-prev {
-        left: 0;
-    }
-     .navbar-default .navbar-nav.nav > li > a {
-        padding: 8px;
-    }
-    .mastersList .col-lg-6 {
-        margin-bottom: 20px;
-    }
 
-    .nav.navbar-nav li, .nav.navbar-nav {
-        display: block;
+    .price-title {
+        text-align: center;
     }
-
-    .navbar-default .navbar-nav.nav > li > a {
-        border-right: 0;
+    .priceImg {
+        margin-top: 20px;
+        text-align: center;
     }
-	.articleItem .btn-holder {
-		padding-top:10px;
-	}
-    .articleItem {
-        padding-bottom: 15px;
-    }
-    .articleLink.col-md-8, .btn-holder.col-md-4 {
-        padding-left:0;
-        padding-right:0;
-    } 
 }
+    @media(max-width:767px) {
+        .adress {
+            flex-direction: column-reverse;
+        }
+        .column {
+            width: 100%;
+            margin-top:20px;
+        }
+        .main {
+            margin-top: 60px;
+        }
+
+        .mainImg {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .main h1 {
+            font-size: 25px;
+        }
+
+        
+
+        .mastersName {
+            padding: 15px 0;
+        }
+
+        .gallery .slick-next {
+            right: 0;
+        }
+
+        .imgMaster, .mastersName {
+            text-align: center;
+        }
+
+        .mastersContainer h2 {
+            font-size: 20px;
+        }
+
+        .gallery .slick-prev {
+            left: 0;
+        }
+
+        .navbar-default .navbar-nav.nav > li > a {
+            padding: 8px;
+        }
+
+        .mastersList .col-lg-6 {
+            margin-bottom: 20px;
+        }
+
+        .nav.navbar-nav li, .nav.navbar-nav {
+            display: block;
+        }
+
+        .navbar-default .navbar-nav.nav > li > a {
+            border-right: 0;
+        }
+
+        .articleItem .btn-holder {
+            padding-top: 10px;
+        }
+
+        .articleItem {
+            padding-bottom: 15px;
+        }
+
+        .articleLink.col-md-8, .btn-holder.col-md-4 {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    @media(max-width:600px) {
+        .priceList .col-xs-7,
+        .priceList .col-xs-5 {
+            width: 100%;
+            text-align:center;
+        }
+        .name-procedure {
+            padding-bottom:5px;
+        }
+    }
