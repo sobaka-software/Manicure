@@ -173,6 +173,8 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Contact\Get.cshtml" />
     <Content Include="Views\Article\Get.cshtml" />
+    <Content Include="Views\Price\Add.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

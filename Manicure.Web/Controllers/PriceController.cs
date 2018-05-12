@@ -11,6 +11,20 @@ namespace Manicure.Web.Controllers
             return View();
         }
 
+        [Route("add")]
+        [HttpGet]
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        [Route("add")]
+        [HttpPost]
+        public ActionResult Add(string stub)
+        {
+            return View();
+        }
+
         [Route("update")]
         [HttpGet]
         public ActionResult Update()
