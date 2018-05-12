@@ -1,4 +1,6 @@
-﻿using System.Net;
+﻿using Manicure.BusinessLogic.Authentication;
+using Manicure.BusinessLogic.Services.Abstract;
+using Manicure.BusinessLogic.Services.Concrete;
 using Ninject.Modules;
 
 namespace Manicure.Dependencies.NinjectModules
@@ -7,6 +9,8 @@ namespace Manicure.Dependencies.NinjectModules
     {
         public override void Load()
         {
+            Bind<IUserService>().To<UserService>();
+
             Bind<IAuthProvider>().To<AuthProvider>();
         }
     }

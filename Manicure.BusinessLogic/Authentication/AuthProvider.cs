@@ -9,6 +9,7 @@ namespace Manicure.BusinessLogic.Authentication
     public class AuthProvider : IAuthProvider
     {
         private readonly IUserService _userService;
+
         public AuthProvider(IUserService userService)
         {
             _userService = userService;
