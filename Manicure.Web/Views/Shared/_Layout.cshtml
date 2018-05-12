@@ -7,9 +7,13 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/slick.css" rel="stylesheet" />
+    <link href="~/Content/slick-theme.css" rel="stylesheet" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/slick.min.js"></script>
+    <script src="~/Scripts/Site.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -44,12 +48,5 @@
     </footer>
 </div>
 
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('ul.nav.navbar-nav').find('a[href="' + location.pathname + '"]')
-            .closest('li').addClass('active');
-    });
-</script>
 </body>
 </html>
