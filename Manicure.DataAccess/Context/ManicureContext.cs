@@ -5,7 +5,7 @@ namespace Manicure.DataAccess.Context
 {
     public class ManicureContext : DbContext
     {
-        public ManicureContext() : base("ManicureDBConnectionString")
+        public ManicureContext(string connectionString) : base(connectionString)
         {
             Database.SetInitializer(new ManicureInitializer());
             Database.Initialize(true);
