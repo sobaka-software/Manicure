@@ -190,6 +190,10 @@
       <Project>{00D5FB1E-95C8-4DDE-8833-3C9844BD6ACF}</Project>
       <Name>Manicure.DataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Manicure.Dependencies\Manicure.Dependencies.csproj">
+      <Project>{247D7601-0416-4EFF-99FF-CDD01FACD8CD}</Project>
+      <Name>Manicure.Dependencies</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

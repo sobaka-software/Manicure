@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Manicure.Dependencies</RootNamespace>
     <AssemblyName>Manicure.Dependencies</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,6 +50,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Manicure.BusinessLogic\Manicure.BusinessLogic.csproj">
+      <Project>{1fa629fb-34d7-4f49-9f51-d45738b797bc}</Project>
+      <Name>Manicure.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manicure.DataAccess\Manicure.DataAccess.csproj">
+      <Project>{00d5fb1e-95c8-4dde-8833-3c9844bd6acf}</Project>
+      <Name>Manicure.DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

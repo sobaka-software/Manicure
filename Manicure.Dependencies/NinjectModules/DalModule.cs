@@ -1,4 +1,6 @@
-﻿using Ninject.Modules;
+﻿using Manicure.DataAccess.Abstract;
+using Manicure.DataAccess.Concrete;
+using Ninject.Modules;
 
 namespace Manicure.Dependencies.NinjectModules
 {
@@ -6,7 +8,9 @@ namespace Manicure.Dependencies.NinjectModules
     {
         public override void Load()
         {
-            throw new System.NotImplementedException();
+            Bind(typeof(IRepository<>)).To(typeof(Repository<>));
+
+            Bind<IUnitOfWork>().To<UnitOfWork>();
         }
     }
 }
