@@ -1,34 +1,54 @@
-﻿
+﻿@model IEnumerable<Article>
+
 @{
     ViewBag.Title = "Get";
 }
 
 <main class="main">
     <div class="articleList">
-        <div class="articleItem row">
-            <a href="#" class="articleLink">Lorem ipsum dolor sit amet, consecteturer</a>
-            <div class="btn-holder">
-                <a href="#" role="button" class="btn btn-warning">Добавить</a>
-                <a href="#" role="button" class="btn btn-danger">Очистить</a>
+        @if (Model != null)
+        {
+            foreach (var article in Model)
+            {
+                <div class="articleItem row">
+                    <a href="@article.Link" class="articleLink">@article.Name</a>
+                    <div class="btn-holder">
+                        <a class="btn btn-warning btnAddField" onclick="setForUpdate('@article.Id', '@article.Name', '@article.Link')">Редактировать</a>
+                        @Html.ActionLink("Удалить", "Delete", new { id = article.Id }, new { @class = "btn btn-danger" })
+                    </div>
+                </div>
+            }
+        }
+        <a class="btn btn-warning btnAddField">Добавить</a>
+        @using (Html.BeginForm("Update", "Article"))
+        {
+            @Html.Hidden("Id", "")
+            <div class="addField col-md-6">
+                <div class="form-group">
+                    <label for="Address">
+                        Название:
+                    </label>
+                    @Html.Editor("Name", new { htmlAttributes = new { @class = "form-control", placeholder = "Введите название статьи" } })
+                </div>
+                <div class="form-group">
+                    <label for="Email">
+                        Email
+                    </label>
+                    @Html.Editor("Link", new { htmlAttributes = new { @class = "form-control", placeholder = "Введите ссылку" } })
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-warning btn-add" value="Принять" />
+                    <input type="reset" class="btn btn-danger btn-delete" value="Очистить" />
+                </div>
             </div>
-        </div>
-
-        <div class="articleItem row">
-            <a href="#" class="articleLink">Lorem ipsum dolor sit amet, consecteturer</a>
-            <div class="btn-holder">
-                <a href="#" role="button" class="btn btn-warning">Добавить</a>
-                <a href="#" role="button" class="btn btn-danger">Очистить</a>
-            </div>
-        </div>
-
-        <div class="articleItem row">
-            <a href="#" class="articleLink">Lorem ipsum dolor sit amet, consecteturer</a>
-            <div class="btn-holder">
-                <a href="#" role="button" class="btn btn-warning">Добавить</a>
-                <a href="#" role="button" class="btn btn-danger">Очистить</a>
-            </div>
-        </div>
-
+        }
     </div>
 </main>
 
+<script>
+    function setForUpdate(id, name, link) {
+        $('[name="Id"]').val(id);
+        $('[name="Name"]').val(name);
+        $('[name="Link"]').val(link);
+    }
+</script>

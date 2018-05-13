@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auth\Login.cs" />
     <Compile Include="Domain\Category.cs" />
     <Compile Include="Domain\Client.cs" />
     <Compile Include="Domain\Course.cs" />
@@ -56,6 +57,8 @@
     <Compile Include="Domain\ReviewClient.cs" />
     <Compile Include="Domain\Schedule.cs" />
     <Compile Include="Domain\User.cs" />
+    <Compile Include="General\Article.cs" />
+    <Compile Include="General\Contact.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

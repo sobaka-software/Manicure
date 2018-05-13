@@ -1,4 +1,4 @@
-﻿namespace Manicure.BusinessLogic.Authentication
+﻿namespace Manicure.Common.Auth
 {
     public class Login
     {

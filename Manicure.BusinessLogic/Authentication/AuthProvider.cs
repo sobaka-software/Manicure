@@ -2,6 +2,7 @@
 using System.Web;
 using System.Web.Security;
 using Manicure.BusinessLogic.Services.Abstract;
+using Manicure.Common.Auth;
 using Manicure.Common.Domain;
 
 namespace Manicure.BusinessLogic.Authentication

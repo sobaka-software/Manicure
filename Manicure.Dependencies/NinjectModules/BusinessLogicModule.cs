@@ -10,6 +10,8 @@ namespace Manicure.Dependencies.NinjectModules
         public override void Load()
         {
             Bind<IUserService>().To<UserService>();
+            Bind<IContactService>().To<ContactService>();
+            Bind<IArticleService>().To<ArticleService>();
 
             Bind<IAuthProvider>().To<AuthProvider>();
         }

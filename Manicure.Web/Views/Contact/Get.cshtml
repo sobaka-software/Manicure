@@ -1,4 +1,5 @@
-﻿
+﻿@model Contact
+
 @{
     ViewBag.Title = "Get";
 }
@@ -6,19 +7,65 @@
 <main class="main">
     <div class="row adress">
         <div class="column text-center">
-                <p  class="sity">
-                <strong>Адрес:</strong><br/>
-                Город Харьков
-                ул.Таккопия 18 а
-            </p>
-            <p class="email">
-                <strong>Email: </strong>user@gmail.com
-            </p>
-            <p class="phone">
-                <strong>Номер телефона:</strong> <a href="tel:0933345050">0933345050</a>
-</p>
-            <strong class="timeWork">Часы работы: 9.00-17.00</strong>
-</div>
+            @if (Model.Address != null)
+            {
+                <p class="sity">
+                    <strong>Адрес:</strong><br />
+                    @Model.Address
+                </p>
+            }
+            @if (Model.Email != null)
+            {
+                <p class="email">
+                    <strong>Email: </strong>@Model.Email
+                </p>
+            }
+            @if (Model.PhoneNumber != null)
+            {
+                <p class="phone">
+                    <strong>Номер телефона:</strong> <a href="tel:@Model.PhoneNumber">@Model.PhoneNumber</a>
+                </p>
+            }
+            @if (Model.OpeningHours != null)
+            {
+                <strong class="timeWork">Часы работы: @Model.OpeningHours</strong>
+            }
+            <br /><a class="btn btn-warning btnAddField">Редактировать</a>
+            <br />
+            @using (Html.BeginForm("Update", "Contact"))
+            {
+                <div class="addField">
+                    <div class="form-group">
+                        <label for="Address">
+                            Адрес:
+                        </label>
+                        @Html.EditorFor(c => c.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Введите адрес" } })
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">
+                            Email
+                        </label>
+                        @Html.EditorFor(c => c.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Введите email", type = "email" } })
+                    </div>
+                    <div class="form-group">
+                        <label for="PhoneNumber">
+                            Email
+                        </label>
+                        @Html.EditorFor(c => c.PhoneNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Введите номер телефона", type = "text" } })
+                    </div>
+                    <div class="form-group">
+                        <label for="OpeningHours">
+                            Часы работы
+                        </label>
+                        @Html.EditorFor(c => c.OpeningHours, new { htmlAttributes = new { @class = "form-control", placeholder = "Введите часы работы", type = "text" } })
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-warning btn-add" value="Принять" />
+                        <input type="reset" class="btn btn-danger btn-delete" value="Очистить" />
+                    </div>
+                </div>
+            }
+        </div>
         <div class="column text-center">
             <img src="http://via.placeholder.com/350x250" alt="Alternate Text" />
         </div>

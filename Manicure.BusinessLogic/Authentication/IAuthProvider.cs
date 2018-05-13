@@ -1,4 +1,5 @@
-﻿using Manicure.Common.Domain;
+﻿using Manicure.Common.Auth;
+using Manicure.Common.Domain;
 
 namespace Manicure.BusinessLogic.Authentication
 {
