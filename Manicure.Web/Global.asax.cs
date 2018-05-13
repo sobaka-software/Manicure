@@ -3,7 +3,9 @@ using System.Configuration;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
+using AutoMapper;
 using Manicure.Dependencies.NinjectModules;
+using Manicure.Web.Utils.Automapper;
 using Ninject;
 using Ninject.Modules;
 using Ninject.Web.Common.WebHost;
@@ -18,6 +20,7 @@ namespace Manicure.Web
 
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            Mapper.Initialize(cfg => cfg.AddProfile(new MappingProfile()));
         }
 
         protected void Application_PostAuthenticateRequest(object sender, EventArgs e)

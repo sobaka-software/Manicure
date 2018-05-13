@@ -16,38 +16,46 @@
     <script src="~/Scripts/Site.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Главная", "Main", "Home")</li>
+                    <li>@Html.ActionLink("Прайс", "Get", "Price")</li>
+                    <li>@Html.ActionLink("Мастера", "Get", "Masters")</li>
+                    <li>@Html.ActionLink("Фото", "Get", "Photo")</li>
+                    <li>@Html.ActionLink("Отзывы", "Get", "Review")</li>
+                    <li>@Html.ActionLink("Статьи", "Get", "Article")</li>
+                    <li>@Html.ActionLink("Контакты", "Get", "Contact")</li>
+                    <li>@Html.ActionLink("Курсы", "Index", "Course")</li>
+                    <li>@Html.ActionLink("Магазин", "Index", "Shop")</li>
+                    <li>@Html.ActionLink("Вход", "Login", "User")</li>
+                    @if (User.Identity.Name != "")
+                    {
+                        <li>@User.Identity.Name</li>
+                    }
+                    else
+                    {
+                        <li>Гость</li>
+                    }
+                </ul>
+            </div>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Главная", "Main", "Home")</li>
-                <li>@Html.ActionLink("Прайс", "Get", "Price")</li>
-                <li>@Html.ActionLink("Мастера", "Get", "Masters")</li>
-                <li>@Html.ActionLink("Фото", "Get", "Photo")</li>
-                <li>@Html.ActionLink("Отзывы", "Get", "Review")</li>
-                <li>@Html.ActionLink("Статьи", "Get", "Article")</li>
-                <li>@Html.ActionLink("Контакты", "Get", "Contact")</li>
-                <li>@Html.ActionLink("Курсы", "Main", "Home")</li>
-                <li>@Html.ActionLink("Магазин", "Main", "Home")</li>
-                <li>@Html.ActionLink("Вход", "Login", "User")</li>
-            </ul>
-        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <footer class="footer">
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
     </div>
-</nav>
-<div class="container body-content">
-    @RenderBody()
-    <footer class="footer">
-        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-    </footer>
-</div>
 
 </body>
 </html>

@@ -1,10 +1,19 @@
 ﻿using System.Web.Mvc;
+using Manicure.BusinessLogic.Authentication;
+using Manicure.Common.Auth;
 
 namespace Manicure.Web.Controllers
 {
     [RoutePrefix("user")]
     public class UserController : Controller
     {
+        private readonly IAuthProvider _authProvider;
+
+        public UserController(IAuthProvider authProvider)
+        {
+            _authProvider = authProvider;
+        }
+
         [HttpGet]
         [Route("login")]
         public ActionResult Login()
@@ -14,9 +23,11 @@ namespace Manicure.Web.Controllers
 
         [HttpPost]
         [Route("login")]
-        public ActionResult Login(string id)
+        public ActionResult Login(Login login)
         {
-            return View();
+            _authProvider.Authenticate(login);
+
+            return RedirectToAction("Main", "Home");
         }
 
         [HttpGet]

@@ -12,6 +12,7 @@ namespace Manicure.Dependencies.NinjectModules
             Bind<IUserService>().To<UserService>();
             Bind<IContactService>().To<ContactService>();
             Bind<IArticleService>().To<ArticleService>();
+            Bind<IReviewService>().To<ReviewService>();
 
             Bind<IAuthProvider>().To<AuthProvider>();
         }

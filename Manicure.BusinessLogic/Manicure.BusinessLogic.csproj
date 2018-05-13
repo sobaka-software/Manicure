@@ -49,9 +49,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Abstract\IArticleService.cs" />
     <Compile Include="Services\Abstract\IContactService.cs" />
+    <Compile Include="Services\Abstract\IReviewService.cs" />
     <Compile Include="Services\Abstract\IUserService.cs" />
     <Compile Include="Services\Concrete\ArticleService.cs" />
     <Compile Include="Services\Concrete\ContactService.cs" />
+    <Compile Include="Services\Concrete\ReviewService.cs" />
     <Compile Include="Services\Concrete\UserService.cs" />
   </ItemGroup>
   <ItemGroup>

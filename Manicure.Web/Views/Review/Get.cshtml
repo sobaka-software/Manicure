@@ -1,22 +1,26 @@
-﻿
+﻿@model IEnumerable<ReviewViewModel>
+
 @{
     ViewBag.Title = "Get";
 }
+
 <main class="main">
-    <form action="#" class="reviewForm col-xs-12 col-sm-6 col-md-6 col-lg-4">
+    @foreach (var review in Model)
+    {
+        <span>review.Review</span>
+    }
+    @using (Html.BeginForm("Add", "Review", FormMethod.Post, new { @class = "reviewForm col-xs-12 col-sm-6 col-md-6 col-lg-4" }))
+    {
         <div class="form-group">
             <label for="review">
                 Отзыв:
             </label>
-            <textarea placeholder="Оставить отзыв" class="form-control"></textarea>
+            @Html.TextArea("Review", new { @class = "form-control", placeholder = "Оставить отзыв" })
         </div>
 
         <div class="form-group text-center">
-            <a href="#" role="button" class="btn btn-md btn-warning btnAddReview">Добавить</a>
-            <a href="#" role="button" class="btn btn-md btn-danger btnCleanReview">Очистить</a>
+            <input type="submit" class="btn btn-md btn-warning btnAddReview" value="Добавить" />
+            <input type="reset" class="btn btn-md btn-danger btnCleanReview" value="Очистить" />
         </div>
-    </form>
+    }
 </main>
-
-
-

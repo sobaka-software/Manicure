@@ -15,6 +15,7 @@ namespace Manicure.Web.Controllers
             _articleService = articleService;
         }
 
+        [HttpGet]
         [Route("")]
         public ActionResult Get()
         {
@@ -22,7 +23,8 @@ namespace Manicure.Web.Controllers
 
             return View(articles);
         }
-        
+
+        [HttpPost]
         [Route("update")]
         public ActionResult Update(Article article)
         {
@@ -31,6 +33,7 @@ namespace Manicure.Web.Controllers
             return RedirectToAction("Get");
         }
 
+        [HttpGet]
         [Route("delete")]
         public ActionResult Delete(Guid id)
         {

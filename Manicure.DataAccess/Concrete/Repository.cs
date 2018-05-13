@@ -21,8 +21,9 @@ namespace Manicure.DataAccess.Concrete
             _dbSet.Add(entity);
         }
 
-        public void Delete(T entity)
+        public void Delete(int id)
         {
+            var entity = _dbSet.Find(id);
             _dbSet.Remove(entity);
         }
 
@@ -44,6 +45,11 @@ namespace Manicure.DataAccess.Concrete
         public void Update(T entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
+        }
+
+        public IEnumerable<T> GetAll()
+        {
+            return _dbSet;
         }
     }
 }

@@ -10,12 +10,14 @@ namespace Manicure.DataAccess.Abstract
 
         void Update(T entity);
 
-        void Delete(T entity);
+        void Delete(int id);
 
         IEnumerable<T> Get(Expression<Func<T, bool>> filter);
 
         T GetFirst(Expression<Func<T, bool>> filter);
 
         bool Any(Expression<Func<T, bool>> filter);
+
+        IEnumerable<T> GetAll();
     }
 }
