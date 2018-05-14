@@ -12,7 +12,7 @@
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/slick.min.js"></script>
+    <script src="~/Scripts/Slick/slick.min.js"></script>
     <script src="~/Scripts/Site.js"></script>
 </head>
 <body>
@@ -39,7 +39,7 @@
                     <li>@Html.ActionLink("Магазин", "Index", "Shop")</li>
                     @if (User.Identity.Name != "")
                     {
-                    <li>@User.Identity.Name</li>
+                    <li class="userName"><a href="#">@User.Identity.Name</a></li>
                     }
                     else
                     {

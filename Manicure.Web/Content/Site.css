@@ -39,6 +39,11 @@ ol li {
     font-weight: bold;
 }
 
+.navbar-default .navbar-nav.nav>li>a:focus,
+ .navbar-default .navbar-nav.nav>li>a:hover {
+    background: #f6caae;
+    color: #d07038;
+}
 .navbar-default .navbar-nav.nav > li:last-child > a {
     border-right: none;
 }
@@ -46,7 +51,8 @@ ol li {
 .navbar-default .navbar-nav.nav > li:hover > a,
 .navbar-default .navbar-nav > li.active > a,
 .navbar-default .navbar-nav > li.active > a:focus,
-.navbar-default .navbar-nav > li.active > a:hover {
+.navbar-default .navbar-nav > li.active > a:hover,
+.navbar-default .navbar-nav > li.active > a:active {
     background: #f6caae;
     color: #d07038;
 }
@@ -269,6 +275,9 @@ ol li {
 
     .adress a {
         color: #333;
+    }
+      .adress a.btn {
+        color: #fff;
     }
 /* adress styles done */
 /* footer styles */
