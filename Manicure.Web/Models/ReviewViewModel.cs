@@ -4,7 +4,7 @@ namespace Manicure.Web.Models
 {
     public class ReviewViewModel
     {
-        public Client Client { get; set; }
+        public User User { get; set; }
 
         public string Review { get; set; }
     }

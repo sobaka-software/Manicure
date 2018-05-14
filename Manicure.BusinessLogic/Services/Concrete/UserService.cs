@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Manicure.BusinessLogic.Services.Abstract;
 using Manicure.Common.Domain;
 using Manicure.DataAccess.Abstract;

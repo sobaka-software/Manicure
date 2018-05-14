@@ -34,7 +34,7 @@ namespace Manicure.DataAccess.Concrete
 
         public IEnumerable<T> Get(System.Linq.Expressions.Expression<System.Func<T, bool>> filter)
         {
-            return _dbSet.Where(filter);
+            return _dbSet.Where(filter).ToList();
         }
 
         public T GetFirst(System.Linq.Expressions.Expression<System.Func<T, bool>> filter)
@@ -49,7 +49,7 @@ namespace Manicure.DataAccess.Concrete
 
         public IEnumerable<T> GetAll()
         {
-            return _dbSet;
+            return _dbSet.ToList();
         }
     }
 }

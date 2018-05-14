@@ -7,9 +7,9 @@ namespace Manicure.Common.Domain
         [Key]
         public int ReviewId { get; set; }
 
-        public int ClientId { get; set; }
+        public int UserId { get; set; }
 
-        public virtual Client Client { get; set; }
+        public virtual User User { get; set; }
 
         public string Review { get; set; }
     }

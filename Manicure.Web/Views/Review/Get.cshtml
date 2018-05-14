@@ -14,7 +14,7 @@
         <div class="newReview">
             @foreach (var review in Model)
             {
-                <p class="addNewReview bg-primary p-3"> Lorem ipsum dolor sit amet.</p>
+                <p class="addNewReview bg-primary p-3">@review.User.FirstName @review.User.LastName @review.Review</p>
             }
         </div>
     }

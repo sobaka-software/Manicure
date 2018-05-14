@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using Manicure.BusinessLogic.Services.Abstract;
@@ -21,7 +22,7 @@ namespace Manicure.Web.Controllers
         [Route("")]
         public ActionResult Get()
         {
-            var reviews = _reviewClientService.Get();
+            var reviews = _reviewClientService.Get().ToList();
 
             var allReviews = Mapper.Map<IEnumerable<ReviewClient>, IEnumerable<ReviewViewModel>>(reviews);
 
@@ -34,7 +35,7 @@ namespace Manicure.Web.Controllers
         {
             var reviewEntity = Mapper.Map<ReviewViewModel, ReviewClient>(userReview);
 
-            _reviewClientService.Add(reviewEntity);
+            _reviewClientService.Add(reviewEntity, User.Identity.Name);
 
             return RedirectToAction("Get");
         }

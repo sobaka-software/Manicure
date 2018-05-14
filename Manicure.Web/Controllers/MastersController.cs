@@ -37,39 +37,5 @@ namespace Manicure.Web.Controllers
 
             return View(mastersToShow);
         }
-
-        [Route("add")]
-        [HttpGet]
-        public ActionResult Add()
-        {
-            return View();
-        }
-
-        [Route("add")]
-        [HttpPost]
-        public ActionResult Add(string stub)
-        {
-            return View();
-        }
-
-        [Route("update")]
-        [HttpGet]
-        public ActionResult Update()
-        {
-            return View();
-        }
-
-        [Route("update")]
-        [HttpPost]
-        public ActionResult Update(string stub)
-        {
-            return View();
-        }
-
-        [Route("delete")]
-        public ActionResult Delete()
-        {
-            return RedirectToAction("Get");
-        }
     }
 }

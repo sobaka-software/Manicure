@@ -5,7 +5,7 @@ namespace Manicure.BusinessLogic.Services.Abstract
 {
     public interface IReviewClientService
     {
-        void Add(ReviewClient reviewClient);
+        void Add(ReviewClient reviewClient, string userLogin);
 
         IEnumerable<ReviewClient> Get();
     }
