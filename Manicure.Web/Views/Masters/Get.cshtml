@@ -12,16 +12,16 @@
                 var base64 = Convert.ToBase64String(master.Photo);
                 var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
                 <div class="col-lg-6 masterItem clearfix">
-                    <div class="col-sm-4 col-md-5 imgMaster">
-                        <img src="@imgSrc" alt="Master" />
+                    <div class="col-sm-4 col-md-5 imgMaster text-center">
+                        <img src="@imgSrc" alt='@(master.FirstName + " " + master.LastName)' />
                     </div>
                     <div class="col-sm-8 col-md-7">
-                        <h4 class="mastersName">Иванова Ольга</h4>
+                        <h4 class="mastersName">@master.FirstName @master.LastName</h4>
                         <div class="mastersDescription">
                             <p>Телефон:</p>
-                            <p>055-858-55-55</p>
+                            <p>@master.PhoneNumber</p>
                             <p>Краткое описание:</p>
-                            <p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</p>
+                            <p>@master.Description</p>
                         </div>
                     </div>
                     <div class="gallery gallery-masters col-sm-12">
@@ -35,28 +35,5 @@
                     </div>
                 </div>
             }
-            <div class="col-lg-6 masterItem clearfix">
-                <div class="col-sm-4 col-md-5 imgMaster text-center">
-                    <img src="http://via.placeholder.com/350x250" alt="Master" />
-                </div>
-                <div class="col-sm-8 col-md-7">
-                    <h4 class="mastersName">Петрова Анна</h4>
-                    <div class="mastersDescription">
-                        <p>Телефон:</p>
-                        <p>055-858-55-55</p>
-                        <p>Краткое описание:</p>
-                        <p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</p>
-                    </div>
-                </div>
-                <div class="gallery gallery-masters col-sm-12">
-                    <div><img src="http://via.placeholder.com/250x250" alt="1" /><p class="image-description">Lorem ipsum dolor sit.</p></div>
-                    <div><img src="http://via.placeholder.com/350x250" alt="2" /><p class="image-description"> Lorem ipsum dolor sit amet.</p></div>
-                    <div><img src="http://via.placeholder.com/350x250" alt="3" /><p class="image-description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
-                    <div><img src="http://via.placeholder.com/350x250" alt="4" /><p class="image-description">Lorem ipsum dolor sit.</p></div>
-                    <div><img src="http://via.placeholder.com/350x250" alt="5" /><p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
-                    <div><img src="http://via.placeholder.com/350x250" alt="6" /><p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
-                    <div><img src="http://via.placeholder.com/350x250" alt="7" /><p class="image-description">Lorem ipsum dolor sit.</p></div>
-                </div>
-            </div>
         </div>
 </main>

@@ -5,26 +5,20 @@ using Manicure.DataAccess.Abstract;
 
 namespace Manicure.BusinessLogic.Services.Concrete
 {
-    public class ReviewService : IReviewService
+    public class ReviewClientService : IReviewClientService
     {
         private readonly IRepository<ReviewClient> _reviewClientRepository;
         private readonly IUnitOfWork _unitOfWork;
-
-        public ReviewService(IRepository<ReviewClient> reviewClientRepository, IUnitOfWork unitOfWork)
+        
+        public ReviewClientService(IRepository<ReviewClient> reviewClientRepository, IUnitOfWork unitOfWork)
         {
             _reviewClientRepository = reviewClientRepository;
             _unitOfWork = unitOfWork;
         }
 
-        public void Add(ReviewClient review)
+        public void Add(ReviewClient reviewClient)
         {
-            _reviewClientRepository.Create(review);
-            _unitOfWork.SaveChanges();
-        }
-
-        public void Delete(int id)
-        {
-            _reviewClientRepository.Delete(id);
+            _reviewClientRepository.Create(reviewClient);
             _unitOfWork.SaveChanges();
         }
 

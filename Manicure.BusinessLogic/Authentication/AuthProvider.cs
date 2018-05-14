@@ -23,7 +23,13 @@ namespace Manicure.BusinessLogic.Authentication
             if (user != null)
             {
                 var timeout = login.RememberMe ? 525600 : 60;
-                var authTicket = new FormsAuthenticationTicket(login.UserLogin, login.RememberMe, timeout);
+                var authTicket = new FormsAuthenticationTicket(
+                    1,
+                    login.UserLogin,
+                    DateTime.Now,
+                    DateTime.Now.AddHours(1),
+                    login.RememberMe,
+                    string.Join("|", user.Role));
                 var encryptedAuthTicket = FormsAuthentication.Encrypt(authTicket);
                 var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedAuthTicket)
                 {

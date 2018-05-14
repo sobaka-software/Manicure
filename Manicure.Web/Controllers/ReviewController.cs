@@ -10,18 +10,18 @@ namespace Manicure.Web.Controllers
     [RoutePrefix("review")]
     public class ReviewController : Controller
     {
-        private readonly IReviewService _reviewService;
+        private readonly IReviewClientService _reviewClientService;
 
-        public ReviewController(IReviewService reviewService)
+        public ReviewController(IReviewClientService reviewClientService)
         {
-            _reviewService = reviewService;
+            _reviewClientService = reviewClientService;
         }
 
         [HttpGet]
         [Route("")]
         public ActionResult Get()
         {
-            var reviews = _reviewService.Get();
+            var reviews = _reviewClientService.Get();
 
             var allReviews = Mapper.Map<IEnumerable<ReviewClient>, IEnumerable<ReviewViewModel>>(reviews);
 
@@ -34,16 +34,7 @@ namespace Manicure.Web.Controllers
         {
             var reviewEntity = Mapper.Map<ReviewViewModel, ReviewClient>(userReview);
 
-            _reviewService.Add(reviewEntity);
-
-            return RedirectToAction("Get");
-        }
-
-        [HttpGet]
-        [Route("remove")]
-        public ActionResult Remove(int id)
-        {
-            _reviewService.Delete(id);
+            _reviewClientService.Add(reviewEntity);
 
             return RedirectToAction("Get");
         }

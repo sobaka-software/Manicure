@@ -91,5 +91,14 @@ namespace Manicure.Web.Controllers
 
             return RedirectToAction("Main", "Home");
         }
+
+        [HttpGet]
+        [Route("logout")]
+        public ActionResult Logout()
+        {
+            _authProvider.Deauthenticate();
+
+            return RedirectToAction("Main", "Home");
+        }
     }
 }

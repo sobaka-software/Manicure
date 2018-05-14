@@ -5,25 +5,48 @@
 }
 
 <main class="main">
-    <div class="newReview">
-        <p class="addNewReview bg-primary p-3"> Lorem ipsum dolor sit amet.</p>   
-    </div>
-    @foreach (var review in Model)
+    @if (!Model.Any())
     {
-        <span>review.Review</span>
+        <div class="text-center h3">Отзывов нет</div>
+    }
+    else
+    {
+        <div class="newReview">
+            @foreach (var review in Model)
+            {
+                <p class="addNewReview bg-primary p-3"> Lorem ipsum dolor sit amet.</p>
+            }
+        </div>
     }
     @using (Html.BeginForm("Add", "Review", FormMethod.Post, new { @class = "reviewForm col-xs-12 col-sm-6 col-md-6 col-lg-4" }))
     {
-        <div class="form-group">
-            <label for="review">
-                Отзыв:
-            </label>
-            @Html.TextArea("Review", new { @class = "form-control", placeholder = "Оставить отзыв" })
-        </div>
+        if (User.IsInRole("Client"))
+        {
+            <div class="form-group">
+                <label for="review">
+                    Отзыв:
+                </label>
+                @Html.TextArea("Review", new { @class = "form-control", placeholder = "Оставить отзыв" })
+            </div>
 
-        <div class="form-group text-center">
-            <input type="submit" class="btn btn-md btn-warning btnAddReview" value="Добавить" />
-            <input type="reset" class="btn btn-md btn-danger btnCleanReview" value="Очистить" />
-        </div>
+            <div class="form-group text-center">
+                <input type="submit" class="btn btn-md btn-warning btnAddReview" value="Добавить" />
+                <input type="reset" class="btn btn-md btn-danger btnCleanReview" value="Очистить" />
+            </div>
+        }
+        else
+        {
+            <div class="form-group">
+                <label for="review">
+                    Отзыв:
+                </label>
+                @Html.TextArea("Review", new { @class = "form-control", placeholder = "Оставить отзыв", @readonly = "readonly" })
+            </div>
+
+            <div class="form-group text-center">
+                Только клиенты могут оставлять отзывы
+            </div>
+        }
+
     }
 </main>

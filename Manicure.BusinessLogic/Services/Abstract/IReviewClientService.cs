@@ -3,11 +3,9 @@ using Manicure.Common.Domain;
 
 namespace Manicure.BusinessLogic.Services.Abstract
 {
-    public interface IReviewService
+    public interface IReviewClientService
     {
-        void Add(ReviewClient review);
-
-        void Delete(int id);
+        void Add(ReviewClient reviewClient);
 
         IEnumerable<ReviewClient> Get();
     }

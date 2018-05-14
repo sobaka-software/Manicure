@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Security.Principal;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
@@ -34,11 +35,10 @@ namespace Manicure.Web
                 if (authTicket != null && !authTicket.Expired)
                 {
                     var roles = authTicket.UserData.Split(',');
-                    Context.User = new System.Security.Principal.GenericPrincipal(new FormsIdentity(authTicket), roles);
+                    Context.User = new GenericPrincipal(new FormsIdentity(authTicket), roles);
                 }
             }
         }
-
 
         protected override IKernel CreateKernel()
         {
