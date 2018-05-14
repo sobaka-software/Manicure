@@ -1,8 +1,6 @@
-﻿using System.Web;
-
-namespace Manicure.Web.Models
+﻿namespace Manicure.Web.Models
 {
-    public class UserViewModel
+    public class MasterViewModel
     {
         public string Login { get; set; }
 
@@ -16,11 +14,9 @@ namespace Manicure.Web.Models
 
         public string PhoneNumber { get; set; }
 
-        public string Email { get; set; }
-
         public string Description { get; set; }
 
-        public HttpPostedFileBase Photo { get; set; }
+        public byte[] Photo { get; set; }
 
         public string Role { get; set; }
     }

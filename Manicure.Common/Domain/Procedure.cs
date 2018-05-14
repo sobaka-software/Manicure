@@ -12,6 +12,6 @@ namespace Manicure.Common.Domain
 
         public string Duration { get; set; }
 
-        public ICollection<ProcedureEntry> ProcedureEntries { get; set; }
+        public virtual ICollection<ProcedureEntry> ProcedureEntries { get; set; }
     }
 }

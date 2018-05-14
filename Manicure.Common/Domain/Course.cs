@@ -15,7 +15,7 @@ namespace Manicure.Common.Domain
 
         public int MasterId { get; set; }
 
-        public Master Master { get; set; }
+        public virtual Master Master { get; set; }
 
         public DateTime StartDate { get; set; }
 
@@ -25,6 +25,6 @@ namespace Manicure.Common.Domain
 
         public int MaxNumberOfPeople { get; set; }
 
-        public ICollection<CourseEntry> CourseEntries { get; set; }
+        public virtual ICollection<CourseEntry> CourseEntries { get; set; }
     }
 }

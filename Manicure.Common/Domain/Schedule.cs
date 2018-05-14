@@ -9,7 +9,7 @@ namespace Manicure.Common.Domain
 
         public string MasterId { get; set; }
 
-        public Master Master { get; set; }
+        public virtual Master Master { get; set; }
 
         public DateTime Date { get; set; }
 
@@ -17,6 +17,6 @@ namespace Manicure.Common.Domain
 
         public DateTime EndTime { get; set; }
 
-        public ICollection<ProcedureEntry> ProcedureEntries { get; set; }
+        public virtual ICollection<ProcedureEntry> ProcedureEntries { get; set; }
     }
 }

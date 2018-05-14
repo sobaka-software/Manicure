@@ -8,6 +8,6 @@ namespace Manicure.Common.Domain
 
         public string CategoryName { get; set; }
 
-        public ICollection<Production> Productions { get; set; }
+        public virtual ICollection<Production> Productions { get; set; }
     }
 }

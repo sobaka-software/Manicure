@@ -8,7 +8,7 @@ namespace Manicure.Common.Domain
 
         public int CategoryId { get; set; }
 
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
 
         public string ProductionName { get; set; }
 
@@ -18,6 +18,6 @@ namespace Manicure.Common.Domain
 
         public string NumberOfMeasure { get; set; }
 
-        public ICollection<OrderContent> OrderContents { get; set; }
+        public virtual ICollection<OrderContent> OrderContents { get; set; }
     }
 }

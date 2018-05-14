@@ -9,10 +9,10 @@ namespace Manicure.Common.Domain
 
         public int ClientId { get; set; }
 
-        public Client Client { get; set; }
+        public virtual Client Client { get; set; }
 
         public DateTime SaleDate { get; set; }
 
-        public ICollection<OrderContent> OrderContents { get; set; }
+        public virtual ICollection<OrderContent> OrderContents { get; set; }
     }
 }

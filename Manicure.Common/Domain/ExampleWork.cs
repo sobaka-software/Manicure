@@ -9,7 +9,7 @@ namespace Manicure.Common.Domain
 
         public int MasterId { get; set; }
 
-        public Master Master { get; set; }
+        public virtual Master Master { get; set; }
 
         public byte[] Photo { get; set; }
 

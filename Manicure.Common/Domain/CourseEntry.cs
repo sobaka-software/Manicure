@@ -8,12 +8,12 @@ namespace Manicure.Common.Domain
         [Key, Column(Order = 1)]
         public int CourseId { get; set; }
 
-        public Course Course { get; set; }
+        public virtual Course Course { get; set; }
 
         [Key, Column(Order = 2)]
         public int ClientId { get; set; }
 
-        public Client Client { get; set; }
+        public virtual Client Client { get; set; }
 
         public bool IsPaid { get; set; }
     }

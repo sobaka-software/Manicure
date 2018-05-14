@@ -9,6 +9,16 @@ namespace Manicure.Web.Utils.Automapper
         public MappingProfile()
         {
             CreateMap<ReviewClient, ReviewViewModel>().ReverseMap();
+
+            CreateMap<User, UserViewModel>().ReverseMap();
+
+            CreateMap<Master, UserViewModel>().ReverseMap();
+
+            CreateMap<Client, UserViewModel>().ReverseMap();
+
+            CreateMap<Master, UserViewModel>().ReverseMap();
+
+            CreateMap<User, MasterToViewViewModel>().ReverseMap();
         }
     }
 }

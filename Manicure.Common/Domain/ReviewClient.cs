@@ -9,7 +9,7 @@ namespace Manicure.Common.Domain
 
         public int ClientId { get; set; }
 
-        public Client Client { get; set; }
+        public virtual Client Client { get; set; }
 
         public string Review { get; set; }
     }

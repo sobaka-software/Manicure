@@ -10,7 +10,7 @@ namespace Manicure.DataAccess.Context
             context.Users.Add(new User
             {
                 Password = "123",
-                Login = "log"
+                Login = "log",
             });
             context.SaveChanges();
             base.Seed(context);
