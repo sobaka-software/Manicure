@@ -33,12 +33,23 @@ ol li {
 }
 
 /* header styles */
-.navbar-default .navbar-nav.nav > li > a {
-    border-right: 1px solid #d57d4b;
-    color: #d07038;
+
+.btn.active, .btn:active {
+    background-image: none; 
+     outline: 0; 
+     -webkit-box-shadow: none; 
+     box-shadow: none; 
+}
+.dropdown-item {
+    text-decoration:none;
+     color: #777;
     font-weight: bold;
 }
-
+.dropdown:hover, .dropdown-item:hover, .dropdown-item:active, .dropdown-item:focus {
+    background: none;
+    color: #d07038;
+    text-decoration:none;
+}
 .navbar-default .navbar-nav.nav>li>a:focus,
  .navbar-default .navbar-nav.nav>li>a:hover {
     background: #f6caae;
@@ -67,6 +78,7 @@ ol li {
         display: table-cell;
         float: none;
         text-align: center;
+        font-weight: bold;
     }
 /* header styles done */
 
@@ -74,7 +86,7 @@ ol li {
 .main {
     margin-top: 70px;
     margin-bottom: 20px;
-    min-height: calc(100vh - 140px);
+    min-height: calc(100vh - 155px);
 }
 .btnAddField {
     margin-top:10px;
@@ -139,12 +151,57 @@ ol li {
     font-weight: bold;
     border: none;
 }
-
+.btn.btn-secondary.dropdown-toggle {
+    padding:15px;
+    border-radius:0;
+}
+.nav .open>a, 
+.nav .open>a:focus,
+ .nav .open>a:hover {
+  background: #f6caae;
+  border-color: none;
+}
+.navbar.navbar-default .userName a:hover,
+.navbar.navbar-default .userName a:focus,
+.navbar.navbar-default .userName a:active {
+  background: #f6caae;
+    color: #d07038;
+    outline:none;
+    box-shadow:none;
+   border: none;
+     border-color: none;
+}
+.navbar.navbar-default .userName a.closeUser:hover,
+.navbar.navbar-default .userName a.closeUser:focus,
+.navbar.navbar-default .userName a.closeUser:active {
+ background: none;
+}
 .registrationForm .btn-default:hover {
     color: #333;
     border-color: none;
 }
+.btn.dropdown-toggle {
+    color: #777;
+    font-weight: bold;
+    vertical-align:inherit;
+    border:none;
 
+}
+.userName .dropdown-menu {
+    padding: 5px 15px;
+}
+.dropdown-toggle:after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: .255em;
+    vertical-align: .255em;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-bottom: 0;
+    border-left: .3em solid transparent;
+}
 .form-title {
     color: #d07038;
     margin: 0;
@@ -286,7 +343,9 @@ ol li {
     clear: both;
     border-top: 1px solid #e7e7e7;
 }
-
+    .footer p {
+        margin-bottom: 0;
+    }
     .footer .container {
         color: #333;
         height: 60px;
