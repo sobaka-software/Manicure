@@ -37,14 +37,13 @@
                     <li>@Html.ActionLink("Контакты", "Get", "Contact")</li>
                     <li>@Html.ActionLink("Курсы", "Index", "Course")</li>
                     <li>@Html.ActionLink("Магазин", "Index", "Shop")</li>
-                    <li>@Html.ActionLink("Вход", "Login", "User")</li>
                     @if (User.Identity.Name != "")
                     {
                     <li>@User.Identity.Name</li>
                     }
                     else
                     {
-                    <li>Гость</li>
+                        <li>@Html.ActionLink("Вход", "Login", "User")</li>
                     }
                 </ul>
             </div>
