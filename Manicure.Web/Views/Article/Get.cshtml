@@ -5,25 +5,29 @@
 }
 
 <main class="main">
-    <div class="articleList">
+    <div class="articleList col-sm-12 text-center">
         @if (Model != null)
         {
             foreach (var article in Model)
             {
-                <div class="articleItem row">
-                    <a href="@article.Link" class="articleLink">@article.Name</a>
-                    <div class="btn-holder">
-                        <a class="btn btn-warning btnAddField" onclick="setForUpdate('@article.Id', '@article.Name', '@article.Link')">Редактировать</a>
+                <div class="articleItem clearfix">
+                    <a href="@article.Link" class="articleLink col-sm-7 col-md-8">@article.Name</a>
+                    <div class="btn-holder col-sm-5 col-md-4 col-xs-12 text-right">
+                        <a class="btn btn-warning" onclick="setForUpdate('@article.Id', '@article.Name', '@article.Link')">Редактировать</a>
                         @Html.ActionLink("Удалить", "Delete", new { id = article.Id }, new { @class = "btn btn-danger" })
                     </div>
                 </div>
             }
         }
-        <a class="btn btn-lg btn-success btnAddField">Добавить</a>
+        <div class="col-sm-12 text-center">
+            <a class="btn btn-lg btn-success btnAddField">Добавить</a>
+        </div>
+    
         @using (Html.BeginForm("Update", "Article"))
         {
             @Html.Hidden("Id", "")
-            <div class="addField col-md-6">
+
+            <div class="addField col-sm-6 col-sm-offset-3">
                 <div class="form-group">
                     <label for="Address">
                         Название:

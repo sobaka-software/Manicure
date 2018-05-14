@@ -40,11 +40,11 @@
                     <li>@Html.ActionLink("Вход", "Login", "User")</li>
                     @if (User.Identity.Name != "")
                     {
-                        <li>@User.Identity.Name</li>
+                    <li>@User.Identity.Name</li>
                     }
                     else
                     {
-                        <li>Гость</li>
+                    <li>Гость</li>
                     }
                 </ul>
             </div>
@@ -52,10 +52,13 @@
     </nav>
     <div class="container body-content">
         @RenderBody()
-        <footer class="footer">
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+
     </div>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </div>
+    </footer>
 
 </body>
 </html>

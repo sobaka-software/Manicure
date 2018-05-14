@@ -4,7 +4,10 @@
     margin: 0;
     padding: 0;
 }
-
+.p-3 {
+    padding: 1rem;
+    border-radius:5px;
+}
 img {
     max-width: 100%;
     height: auto;
@@ -14,8 +17,14 @@ ul li {
     list-style: none;
 }
 
-ol li{
+ol li {
     list-style-type: decimal;
+}
+
+.main:after, .main:before {
+    display: table;
+    content: "";
+    clear: both;
 }
 
 .container.body-content {
@@ -58,10 +67,13 @@ ol li{
 
 .main {
     margin-top: 70px;
-    min-height: calc(100vh - 150px);
+    margin-bottom: 20px;
+    min-height: calc(100vh - 140px);
 }
-
-.main-title {
+.btnAddField {
+    margin-top:10px;
+}
+.main-title { 
     margin-bottom: 30px;
 }
 /* header done */
@@ -139,19 +151,23 @@ ol li{
 .btnEnter {
     min-width: 150px;
 }
+
 .priceList .row {
-    margin-bottom:10px;
-    color:#333;
+    margin-bottom: 10px;
+    color: #333;
 }
+
 .addField {
     display: none;
     margin-top: 20px;
 }
+
 .priceList li:after,
 .priceList li:before {
-    content:"";
-    display:table;
+    content: "";
+    display: table;
 }
+
 .priceList li {
     color: #333;
     padding-bottom: 10px;
@@ -160,8 +176,9 @@ ol li{
 .priceList p {
     margin: 0;
 }
+
 .price-title {
-    margin-top:0;
+    margin-top: 0;
 }
 /* priceList styles done*/
 /* mastersList styles */
@@ -192,7 +209,8 @@ ol li{
     color: #333;
 }
 
-.gallery {
+.gallery-main,
+.gallery-masters {
     margin-top: 30px;
 }
 
@@ -200,8 +218,16 @@ ol li{
     max-width: 300px;
 }
 
-.gallery div {
+.gallery-main div, .gallery-masters div {
     text-align: center;
+}
+.gallery-masters .slick-next {
+    right:0;
+    z-index:100;
+}
+.gallery-masters .slick-prev {
+    left:0;
+    z-index:100;
 }
 /* gallery styles  done */
 
@@ -211,7 +237,6 @@ ol li{
 }
 
 .articleList .articleLink {
-    display: inline-block;
     font: bold 20px/1 "Open Sans",sans-serif;
     color: #333;
     text-decoration: none;
@@ -231,8 +256,9 @@ ol li{
 
 /* adress styles */
 .articleItem.row {
-    text-align:center;
+    text-align: center;
 }
+
 .adress {
     display: flex;
     align-items: center;
@@ -240,18 +266,25 @@ ol li{
     padding-top: 20px;
     color: #333;
 }
+
     .adress a {
         color: #333;
     }
-    /* adress styles done */
-    /* footer styles */
-    .footer {
-    color: #333;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+/* adress styles done */
+/* footer styles */
+.footer {
+    background-color: #f8f8f8;
+    clear: both;
+    border-top: 1px solid #e7e7e7;
 }
+
+    .footer .container {
+        color: #333;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
 /* price styles */
 .btn-holder {
@@ -315,15 +348,16 @@ ol li{
         font-size: 25px;
     }
 
-    .gallery .slick-next {
+    .gallery-main .slick-next {
         right: -25px;
         z-index: 100;
     }
 
-    .gallery .slick-prev {
+    .gallery-main .slick-prev {
         left: -25px;
         z-index: 100;
     }
+
     .btnAddBlock {
         text-align: center;
     }
@@ -331,91 +365,97 @@ ol li{
     .price-title {
         text-align: center;
     }
+
     .priceImg {
         margin-top: 20px;
         text-align: center;
     }
 }
-    @media(max-width:767px) {
-        .adress {
-            flex-direction: column-reverse;
-        }
-        .column {
-            width: 100%;
-            margin-top:20px;
-        }
-        .main {
-            margin-top: 60px;
-        }
 
-        .mainImg {
-            margin: 10px 0;
-            text-align: center;
-        }
-
-        .main h1 {
-            font-size: 25px;
-        }
-
-        
-
-        .mastersName {
-            padding: 15px 0;
-        }
-
-        .gallery .slick-next {
-            right: 0;
-        }
-
-        .imgMaster, .mastersName {
-            text-align: center;
-        }
-
-        .mastersContainer h2 {
-            font-size: 20px;
-        }
-
-        .gallery .slick-prev {
-            left: 0;
-        }
-
-        .navbar-default .navbar-nav.nav > li > a {
-            padding: 8px;
-        }
-
-        .mastersList .col-lg-6 {
-            margin-bottom: 20px;
-        }
-
-        .nav.navbar-nav li, .nav.navbar-nav {
-            display: block;
-        }
-
-        .navbar-default .navbar-nav.nav > li > a {
-            border-right: 0;
-        }
-
-        .articleItem .btn-holder {
-            padding-top: 10px;
-        }
-
-        .articleItem {
-            padding-bottom: 15px;
-        }
-
-        .articleLink.col-md-8, .btn-holder.col-md-4 {
-            padding-left: 0;
-            padding-right: 0;
-        }
+@media(max-width:767px) {
+    .adress {
+        flex-direction: column-reverse;
     }
 
-    @media(max-width:600px) {
-        .priceList .col-xs-7,
-        .priceList .col-xs-5 {
-            width: 100%;
-            text-align:center;
-        }
-        .name-procedure {
-            padding-bottom:5px;
-        }
+    .column {
+        width: 100%;
+        margin-top: 20px;
     }
+
+    .main {
+        margin-top: 60px;
+    }
+
+    .mainImg {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .main h1 {
+        font-size: 25px;
+    }
+
+
+
+    .mastersName {
+        padding: 15px 0;
+    }
+
+
+    .imgMaster, .mastersName {
+        text-align: center;
+    }
+
+    .mastersContainer h2 {
+        font-size: 20px;
+    }
+
+    .gallery-main .slick-prev {
+        left: 0;
+    }
+       .gallery-main .slick-next {
+        right: 0;
+    }
+
+
+    .navbar-default .navbar-nav.nav > li > a {
+        padding: 8px;
+    }
+
+    .mastersList .col-lg-6 {
+        margin-bottom: 20px;
+    }
+
+    .nav.navbar-nav li, .nav.navbar-nav {
+        display: block;
+    }
+
+    .navbar-default .navbar-nav.nav > li > a {
+        border-right: 0;
+    }
+
+    .articleItem .btn-holder {
+        padding-top: 10px;
+    }
+
+    .articleItem {
+        padding-bottom: 15px;
+    }
+
+    .articleLink.col-md-8, .btn-holder.col-md-4 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media(max-width:600px) {
+    .priceList .col-xs-7,
+    .priceList .col-xs-5 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .name-procedure {
+        padding-bottom: 5px;
+    }
+}
