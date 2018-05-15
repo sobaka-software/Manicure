@@ -7,8 +7,6 @@ namespace Manicure.DataAccess.Context
     {
         public ManicureContext(string connectionString) : base(connectionString)
         {
-            //Database.SetInitializer(new ManicureInitializer());
-            //Database.Initialize(true);
         }
 
         public DbSet<Category> Categories { get; set; }

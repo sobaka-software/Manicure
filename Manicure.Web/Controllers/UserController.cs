@@ -100,5 +100,12 @@ namespace Manicure.Web.Controllers
 
             return RedirectToAction("Main", "Home");
         }
+
+        [HttpGet]
+        [Route("profile")]
+        public ActionResult UserProfile()
+        {
+            return View();
+        }
     }
 }

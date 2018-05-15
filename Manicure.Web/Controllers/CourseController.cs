@@ -6,9 +6,9 @@ namespace Manicure.Web.Controllers
     public class CourseController : Controller
     {
         [Route("")]
-        public ActionResult Index()
+        public ActionResult Get()
         {
-            return RedirectToAction("Main", "Home");
+            return View();
         }
     }
 }

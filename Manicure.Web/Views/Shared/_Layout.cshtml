@@ -36,7 +36,7 @@
                     <li>@Html.ActionLink("Отзывы", "Get", "Review")</li>
                     <li>@Html.ActionLink("Статьи", "Get", "Article")</li>
                     <li>@Html.ActionLink("Контакты", "Get", "Contact")</li>
-                    <li>@Html.ActionLink("Курсы", "Index", "Course")</li>
+                    <li>@Html.ActionLink("Курсы", "Get", "Course")</li>
                     <li>@Html.ActionLink("Магазин", "Index", "Shop")</li>
                     @if (User.Identity.Name != "")
                     {
@@ -47,6 +47,7 @@
                                 @User.Identity.Name
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                @Html.ActionLink("Личный кабинет", "UserProfile", "User", null, new { @class = "dropdown-item closeUser" })
                                 @Html.ActionLink("Выход", "Logout", "User", null, new { @class = "dropdown-item closeUser" })
                             </div>
                         </div>
