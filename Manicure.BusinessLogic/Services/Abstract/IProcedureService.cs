@@ -7,6 +7,8 @@ namespace Manicure.BusinessLogic.Services.Abstract
     {
         IEnumerable<Procedure> Get();
 
+        void Add(ProcedureEntry procedureEntry, Schedule schedule);
+
         void Update(Procedure procedure);
 
         void Delete(int id);

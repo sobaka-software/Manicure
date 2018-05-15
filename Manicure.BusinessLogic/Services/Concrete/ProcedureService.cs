@@ -16,6 +16,11 @@ namespace Manicure.BusinessLogic.Services.Concrete
             _unitOfWork = unitOfWork;
         }
 
+        public void Add(ProcedureEntry procedureEntry, Schedule schedule)
+        {
+            
+        }
+
         public IEnumerable<Procedure> Get()
         {
             return _procedureRepository.GetAll();

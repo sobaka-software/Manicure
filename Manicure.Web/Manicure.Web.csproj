@@ -182,6 +182,7 @@
     <Compile Include="Controllers\MastersController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Controllers\PriceController.cs" />
+    <Compile Include="Controllers\ProcedureController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -189,8 +190,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ClientViewModel.cs" />
+    <Compile Include="Models\ControlDataViewModel.cs" />
     <Compile Include="Models\MasterToViewViewModel.cs" />
     <Compile Include="Models\MasterViewModel.cs" />
+    <Compile Include="Models\ProcedureEntryViewModel.cs" />
     <Compile Include="Models\ProcedureViewModel.cs" />
     <Compile Include="Models\ReviewViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
@@ -221,6 +224,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Procedure\" />
     <Folder Include="Views\Shop\" />
   </ItemGroup>
   <ItemGroup>

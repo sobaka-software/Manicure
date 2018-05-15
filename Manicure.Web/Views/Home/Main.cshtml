@@ -1,4 +1,5 @@
-﻿
+﻿@model ControlDataViewModel
+
 @{
     ViewBag.Title = "Main";
 }
@@ -6,36 +7,21 @@
 <main class="main">
     <h1 class="main-title text-center">Добро пожаловать в мир красивых ногтей</h1>
 
-    <form action="#" class="registrationForm col-sm-6 col-md-4">
+    @using (Html.BeginForm("Add", "Procedure", FormMethod.Post, new { @class = "registrationForm col-sm-6 col-md-4" }))
+    {
         <div class="formInner">
             <div class="form-group">
                 <h3 class="form-title">Онлайн запись</h3>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="fullname" placeholder="Ваше ФИО" name="fullname">
+                @Html.Editor("Date", new { htmlAttributes = new { @class = "form-control", type = "date", placeholder = "Введите название статьи" } })
             </div>
             <div class="form-group timeBlock clearfix">
-                <input type="email" class="form-control" id="date" placeholder="Дата" name="date">
-                <input type="text" class="form-control" id="time" placeholder="Время" name="time">
+                @Html.Editor("StartTime", new { htmlAttributes = new { @class = "form-control", type = "date", placeholder = "Введите название статьи" } })
+                @Html.Editor("EndTime", new { htmlAttributes = new { @class = "form-control", type = "date", placeholder = "Введите название статьи" } })
             </div>
             <div class="form-group">
-                <select class="form-control selectManipulation">
-                    <option>Выберите процедуру:</option>
-                    <option>1. Комбинированный маникюр</option>
-                    <option>2. Однотонное покрытие</option>
-                    <option>3. Двойная база</option>
-                    <option>4. Укрепление акриловой пудрой</option>
-                    <option>5. Укрепление гелием</option>
-                    <option>6. Ремонт ногтя</option>
-                    <option>7. Матовый эффект</option>
-                    <option>8. Добавление дизайна</option>
-                    <option>9. Французский дизайн, лунный</option>
-                    <option>10. Стемпинг</option>
-                    <option>11. Стразы сваровски</option>
-                    <option>12. Слайдеры</option>
-                    <option>13. Зеркальная втирка</option>
-                    <option>14. Снятие гель-лака</option>
-                </select>
+                @Html.DropDownList("ProcedureId", Model.ProceduresList, new { @class = "form-control selectManipulation" })
             </div>
             <div class="form-group">
                 <select class="form-control">
@@ -45,23 +31,13 @@
                     <option>3. Сидорова Марина</option>
                 </select>
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control" id="phone" placeholder="Ваш телефон:" name="phone">
-            </div>
             <button type="submit" class="btn btn-warning">Записаться</button>
         </div>
-    </form>
+    }
     <div class="col-md-4 col-sm-6 mainImg">
         <img src="http://via.placeholder.com/350x250" alt="Alternate Text" />
     </div>
     <div class="col-md-4 col-sm-12">
         <p class="text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
     </div>
-
-
-
-   
-
-
-
 </main>

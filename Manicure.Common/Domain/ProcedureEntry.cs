@@ -19,7 +19,5 @@ namespace Manicure.Common.Domain
         public int ProcedureId { get; set; }
 
         public virtual Procedure Procedure { get; set; }
-
-        public DateTime StartTime { get; set; }
     }
 }
