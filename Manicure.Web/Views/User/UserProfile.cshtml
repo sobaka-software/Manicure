@@ -34,30 +34,95 @@
     </div>
     <div class="row">
         <h3 class="userPhotoTitle text-center">
-            Фото работ <a href="#" class="btn btn-warning addPhoto">Добавить фото</a>
+            Фото работ <a href="#" class="btn btn-warning addPhoto" data-toggle="modal" data-target="#addPhotoWorksModal">Добавить фото</a>
         </h3>
         <div class="gallery-photo">
-            <div><img src="http://via.placeholder.com/250x250" alt="1" /><p class="image-description">Lorem ipsum dolor sit.</p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="2" /><p class="image-description"> Lorem ipsum dolor sit amet.</p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="3" /><p class="image-description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="4" /><p class="image-description">Lorem ipsum dolor sit.</p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="5" /><p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="6" /><p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="7" /><p class="image-description">Lorem ipsum dolor sit.</p></div>
+            <div><img src="http://via.placeholder.com/250x250" alt="1" /><p class="image-description">Lorem ipsum dolor sit.<br/>
+                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
+            <div><img src="http://via.placeholder.com/350x250" alt="2" /><p class="image-description"> Lorem ipsum dolor sit amet.<br />
+                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
+            <div><img src="http://via.placeholder.com/350x250" alt="3" /><p class="image-description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
+                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
+            <div><img src="http://via.placeholder.com/350x250" alt="4" /><p class="image-description">Lorem ipsum dolor sit.<br />
+                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
+            <div><img src="http://via.placeholder.com/350x250" alt="5" /><p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
+                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
+            <div><img src="http://via.placeholder.com/350x250" alt="6" /><p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
+                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
+            <div><img src="http://via.placeholder.com/350x250" alt="7" /><p class="image-description">Lorem ipsum dolor sit.<br />
+                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
         </div>
     </div>
     <div class="row">
         <h3 class="userDiplomsTitle text-center">
-           Дипломы <a href="#" class="btn btn-warning addPhotoDiploms">Добавить фото</a>
+           Дипломы <a href="#" class="btn btn-warning addPhotoDiploms" data-toggle="modal" data-target="#addPhotoDiplomsModal">Добавить фото</a>
         </h3>
         <div class="gallery-diploms">
-            <div><img src="http://via.placeholder.com/250x250" alt="1" /><p class="image-description">Lorem ipsum dolor sit.</p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="2" /><p class="image-description"> Lorem ipsum dolor sit amet.</p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="3" /><p class="image-description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="4" /><p class="image-description">Lorem ipsum dolor sit.</p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="5" /><p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="6" /><p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="7" /><p class="image-description">Lorem ipsum dolor sit.</p></div>
+            <div><img src="http://via.placeholder.com/250x250" alt="1" /><p class="image-description">Lorem ipsum dolor sit.<br />
+                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
+            <div><img src="http://via.placeholder.com/350x250" alt="2" /><p class="image-description"> Lorem ipsum dolor sit amet.<br />
+                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
+            <div><img src="http://via.placeholder.com/350x250" alt="3" /><p class="image-description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
+                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
+            <div><img src="http://via.placeholder.com/350x250" alt="4" /><p class="image-description">Lorem ipsum dolor sit.<br />
+                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
+            <div><img src="http://via.placeholder.com/350x250" alt="5" /><p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
+                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
+            <div><img src="http://via.placeholder.com/350x250" alt="6" /><p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
+                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
+            <div><img src="http://via.placeholder.com/350x250" alt="7" /><p class="image-description">Lorem ipsum dolor sit.<br />
+                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
+        </div>
+    </div>
+
+    <!-- Modal add-->
+    <div class="modal fade" id="addPhotoWorksModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Добавить фото работ:</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" name="name" value="" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="name" value="" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Добавить</button>
+                    <button type="button" class="btn btn-danger">Очистить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal add-->
+    <div class="modal fade" id="addPhotoDiplomsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Добавить фото дипломов:</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" name="name" value="" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="name" value="" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Добавить</button>
+                    <button type="button" class="btn btn-danger">Очистить</button>
+                </div>
+            </div>
         </div>
     </div>
    

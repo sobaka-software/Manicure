@@ -214,6 +214,19 @@ ol li {
 .btnCourseEntry {
     width:100%;
 }
+.modal .modal-title {
+    display: inline-block;
+}
+.modal .modal-header .close {
+    margin-top: 0;
+}
+.main .modal.in .modal-dialog {
+    -webkit-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    -o-transform: translate(0,0);
+    transform: translate(0,50%);
+}
+
 .timeBlock .form-control:first-child {
     margin-right: 10%;
 }
@@ -222,8 +235,12 @@ ol li {
     border-bottom:1px solid #d57d4b;
     padding:10px 15px;
 }
+.btn.btn-danger.remotePhoto{
+    padding:3px 6px;
+}
 .gallery-photo, .gallery-diploms {
     margin-top:20px;
+    text-align:center;
 }
 .main .userDiplomsTitle {
     margin-top:20px;
@@ -407,6 +424,8 @@ ol li {
 
 .priceList p {
     margin: 0;
+    text-align:center;
+    word-wrap:break-word;
 }
 
 .price-title {
@@ -589,6 +608,11 @@ ol li {
     .navbar-default .navbar-nav.nav > li > a {
         padding: 15px 10px;
     }
+    .btn-holder.col-md-5.col-sm-12 {
+        text-align:center;
+        display:block;
+    }
+
 
     .mastersContainer h2 {
         font-size: 25px;

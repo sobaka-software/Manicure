@@ -5,7 +5,7 @@
 }
 
 <main class="main">
-    <div class="col-md-7">
+    <div class="col-md-9">
         <h4 class="price-title">Здесь Вы можете ознакомиться с ценами нашего сервиса:</h4>
         <div class="priceList">
             @if (Model != null)
@@ -13,10 +13,10 @@
                 foreach (var procedure in Model)
                 {
                     <div class="row">
-                        <p class="name-procedure col-xs-7">
+                        <p class="name-procedure col-md-7">
                             @procedure.ProcedureName - @procedure.Price грн
                         </p>
-                        <div class="btn-holder col-xs-5">
+                        <div class="btn-holder col-md-5 col-sm-12">
                             <a href="#" role="button" class="btn btn-warning btnAddField" onclick="setForUpdate('@procedure.ProcedureId', '@procedure.ProcedureName', '@procedure.Price', '@procedure.Duration')">Редактировать</a>
                             @Html.ActionLink("Удалить", "Delete", new { id = procedure.ProcedureId }, new { @class = "btn btn-danger" })
                         </div>
@@ -58,7 +58,7 @@
             }
         </div>
     </div>
-    <div class="col-md-5 priceImg">
+    <div class="col-md-3 priceImg">
         <img src="http://via.placeholder.com/350x250" alt="Alternate Text" />
     </div>
 </main>
