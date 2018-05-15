@@ -131,6 +131,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Slick\ajax-loader.gif" />
+    <Content Include="Content\fonts\icomoon.svg" />
     <Content Include="Content\Slick\fonts\slick.svg" />
     <Content Include="Content\Slick\slick-theme.css" />
     <Content Include="Content\Slick\slick.css" />
@@ -154,6 +155,9 @@
     <Content Include="Content\Slick\fonts\slick.woff" />
     <Content Include="Content\Slick\fonts\slick.ttf" />
     <Content Include="Content\Slick\fonts\slick.eot" />
+    <Content Include="Content\fonts\icomoon.eot" />
+    <Content Include="Content\fonts\icomoon.ttf" />
+    <Content Include="Content\fonts\icomoon.woff" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

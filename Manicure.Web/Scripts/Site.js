@@ -44,7 +44,7 @@
         ]
     });
 
-    $('.gallery-masters').slick({
+    $('.gallery-masters, .gallery-photo, .gallery-diploms').slick({
         dots: true,
         infinite: true,
         speed: 300,
