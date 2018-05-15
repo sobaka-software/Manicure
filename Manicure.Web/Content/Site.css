@@ -1,4 +1,48 @@
 ﻿
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?uf0u8z');
+  src:  url('fonts/icomoon.eot?uf0u8z#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?uf0u8z') format('truetype'),
+    url('fonts/icomoon.woff?uf0u8z') format('woff'),
+    url('fonts/icomoon.svg?uf0u8z#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-users {
+    padding:0 0 0 10px;
+}
+.icon-users:before {
+  content: "\e972";
+}
+ol, ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+    list-style-position: inside;
+}
+.main .h1,
+.main .h2, 
+.main .h3,
+.main h1,
+.main h2, 
+.main h3 {
+    margin:0;
+}
 
 * {
     margin: 0;
@@ -15,6 +59,7 @@
     width: 30px;
     height: 30px;
     padding: 0;
+    z-index:10;
 }
 
     .main .slick-prev:before,
@@ -89,7 +134,6 @@ ol li {
 }
 
 .container.body-content {
-    /*  font: 16px 'Open Sans', sans-serif;*/
     color: #d07038;
 }
 
@@ -169,25 +213,65 @@ ol li {
     width: 45%;
     float: left;
 }
-
-    .timeBlock .form-control:first-child {
-        margin-right: 10%;
-    }
-
+.btnCourseEntry {
+    width:100%;
+}
+.timeBlock .form-control:first-child {
+    margin-right: 10%;
+}
+.courseEntryForm h3{
+    margin:0;
+    border-bottom:1px solid #d57d4b;
+    padding:10px 15px;
+}
+.gallery-photo, .gallery-diploms {
+    margin-top:20px;
+}
+.main .userDiplomsTitle {
+    margin-top:20px;
+}
 .registrationForm,
 .loginForm,
 .registrNewForm,
-.reviewForm {
+.reviewForm,
+.courseEntryForm {
     background: #fcefec;
     border: 1px solid #d57d4b;
     border-radius: 3px;
     padding: 15px;
 }
 
-    .reviewForm textarea {
-        resize: none;
-        min-height: 150px;
-    }
+.processBlock, .coursesBlock{
+    background: #fcefec;
+    border: 1px solid #d57d4b;
+    border-radius: 3px;
+    padding:15px 0;
+    margin-bottom:20px;
+    overflow-y:auto;
+    max-height:250px;
+}
+.processBlock li, .coursesBlock li {
+     border-top: 1px solid #d57d4b;
+     padding:0 15px;
+     line-height:30px;
+ }
+.processBlock li:last-child, 
+.coursesBlock li:last-child {
+      border-bottom: 1px solid #d57d4b;
+}
+
+
+.main .courseEntryForm {
+    padding:0;
+}
+.main .courseInner{
+     padding: 15px;
+}
+
+.reviewForm textarea {
+   resize: none;
+   min-height: 150px;
+ }
 
 .main {
     position: relative;
@@ -251,23 +335,29 @@ ol li {
     color: #333;
     border-color: none;
 }
-
+.main .userProfileDesclription {
+    margin-top:10px;
+    margin-bottom:20px;
+}
 .btn.dropdown-toggle {
     color: #777;
     font-weight: bold;
     vertical-align: inherit;
     border: none;
 }
-
+.userProfileContainer p,.userProfileContainer li{
+    color:#333;
+}
+.userList {
+    padding-top:10px;
+}
 .userName .dropdown-menu {
     padding: 0;
-    min-width:120px;
 }
 .userName .dropdown-menu  a{
     padding: 8px 15px;
     display:block;
 }
-
 
 .dropdown-toggle:after {
     display: inline-block;
@@ -553,11 +643,9 @@ ol li {
     }
 
 
-
     .mastersName {
         padding: 15px 0;
     }
-
 
     .imgMaster, .mastersName {
         text-align: center;
@@ -567,11 +655,11 @@ ol li {
         font-size: 20px;
     }
 
-    .gallery-main .slick-prev {
+    .slick-slider .slick-prev {
         left: 0;
     }
 
-    .gallery-main .slick-next {
+    .slick-slider .slick-next {
         right: 0;
     }
 
