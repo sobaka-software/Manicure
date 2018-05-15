@@ -116,10 +116,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\fonts\slick.svg" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\slick-theme.css" />
-    <Content Include="Content\slick.css" />
     <Content Include="Content\Slick\ajax-loader.gif" />
     <Content Include="Content\Slick\fonts\slick.svg" />
     <Content Include="Content\Slick\slick-theme.css" />
@@ -138,9 +135,6 @@
     <Content Include="Images\logo.ico" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Content\fonts\slick.eot" />
-    <Content Include="Content\fonts\slick.ttf" />
-    <Content Include="Content\fonts\slick.woff" />
     <Content Include="Data\contact.json" />
     <Content Include="Content\Slick\slick.scss" />
     <Content Include="Content\Slick\slick-theme.scss" />
