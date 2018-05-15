@@ -4,10 +4,69 @@
     margin: 0;
     padding: 0;
 }
+.main p {
+    margin: 0;
+    padding: 0;
+}
 
+/* slick style */
+.main .slick-prev,
+.main .slick-next {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+}
+
+    .main .slick-prev:before,
+    .main .slick-next:before {
+        font-family: 'slick';
+        font-size: 30px;
+        line-height: 1;
+        color: #d07038;
+    }
+
+.main .slick-dots li button:before {
+    font-family: 'slick';
+    font-size: 10px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    content: '•';
+    text-align: center;
+    opacity: .25;
+    color: #d07038;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.main .slick-dots li.slick-active button:before {
+    opacity: .75;
+    color: #d07038;
+}
+
+.main .slick-prev {
+    left: -35px;
+}
+
+.main .slick-next {
+    right: -35px;
+}
+
+/* slick styles done */
 .p-3 {
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     border-radius: 5px;
+    background:#f6caae;
+    font-weight:bold;
+    color:#777;
+    margin-bottom:5px;
+    font-size:18px;
+}
+.newReview .addNewReview {
+    color:#d07038;
 }
 
 img {
@@ -135,8 +194,7 @@ ol li {
 }
 
     .main .loginForm,
-    .main .registrNewForm,
-    .main .reviewForm {
+    .main .registrNewForm{
         position: absolute;
         left: 50%;
         top: 50%;
@@ -202,8 +260,14 @@ ol li {
 }
 
 .userName .dropdown-menu {
-    padding: 5px 15px;
+    padding: 0;
+    min-width:120px;
 }
+.userName .dropdown-menu  a{
+    padding: 8px 15px;
+    display:block;
+}
+
 
 .dropdown-toggle:after {
     display: inline-block;
