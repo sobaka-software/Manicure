@@ -198,17 +198,15 @@ ol li {
     min-height: calc(100vh - 155px);
 }
 
-.btnAddField {
-    margin-top: 10px;
-}
-
-.main-title {
+.main .main-title {
     margin-bottom: 30px;
 }
 /* header done */
 
 /* registrationForm styles */
-
+.registrationForm {
+    margin-bottom:20px;
+}
 .timeBlock .form-control {
     width: 45%;
     float: left;
@@ -263,6 +261,7 @@ ol li {
 
 .main .courseEntryForm {
     padding:0;
+    margin-bottom:20px;
 }
 .main .courseInner{
      padding: 15px;
@@ -703,5 +702,13 @@ ol li {
 
     .name-procedure {
         padding-bottom: 5px;
+    }
+    .courseEntryForm .pull-left,
+    .courseEntryForm .pull-right {
+        float:none!important;
+        text-align:center;
+    }
+    .courseEntryForm .form-group{
+        text-align:center;
     }
 }
