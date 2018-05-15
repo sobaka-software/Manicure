@@ -153,7 +153,6 @@
     <Content Include="Web.config" />
     <Content Include="Views\Home\Main.cshtml" />
     <Content Include="Views\Price\Get.cshtml" />
-    <Content Include="Views\Price\Update.cshtml" />
     <Content Include="Views\Masters\Get.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +173,7 @@
     <Compile Include="Models\ClientViewModel.cs" />
     <Compile Include="Models\MasterToViewViewModel.cs" />
     <Compile Include="Models\MasterViewModel.cs" />
+    <Compile Include="Models\ProcedureViewModel.cs" />
     <Compile Include="Models\ReviewViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -191,7 +191,6 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Contact\Get.cshtml" />
     <Content Include="Views\Article\Get.cshtml" />
-    <Content Include="Views\Price\Add.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\UserProfile.cshtml" />
     <Content Include="Views\Course\Get.cshtml" />

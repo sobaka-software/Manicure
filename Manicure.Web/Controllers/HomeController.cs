@@ -4,6 +4,7 @@ namespace Manicure.Web.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet]
         [Route("")]
         public ActionResult Main()
         {

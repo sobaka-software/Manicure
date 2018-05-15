@@ -19,6 +19,8 @@ namespace Manicure.Web.Utils.Automapper
             CreateMap<Master, UserViewModel>().ReverseMap();
 
             CreateMap<User, MasterToViewViewModel>().ReverseMap();
+
+            CreateMap<Procedure, ProcedureViewModel>().ReverseMap();
         }
     }
 }

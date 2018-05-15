@@ -55,12 +55,14 @@
     <Compile Include="Services\Abstract\IClientService.cs" />
     <Compile Include="Services\Abstract\IContactService.cs" />
     <Compile Include="Services\Abstract\IMasterService.cs" />
+    <Compile Include="Services\Abstract\IProcedureService.cs" />
     <Compile Include="Services\Abstract\IReviewClientService.cs" />
     <Compile Include="Services\Abstract\IUserService.cs" />
     <Compile Include="Services\Concrete\ArticleService.cs" />
     <Compile Include="Services\Concrete\ClientService.cs" />
     <Compile Include="Services\Concrete\ContactService.cs" />
     <Compile Include="Services\Concrete\MasterService.cs" />
+    <Compile Include="Services\Concrete\ProcedureService.cs" />
     <Compile Include="Services\Concrete\ReviewClientService.cs" />
     <Compile Include="Services\Concrete\UserService.cs" />
   </ItemGroup>

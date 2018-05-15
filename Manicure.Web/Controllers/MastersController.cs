@@ -20,6 +20,7 @@ namespace Manicure.Web.Controllers
             _userService = userService;
         }
 
+        [HttpGet]
         [Route("")]
         public ActionResult Get()
         {

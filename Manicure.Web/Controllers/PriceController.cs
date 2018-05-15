@@ -1,42 +1,51 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
+using AutoMapper;
+using Manicure.BusinessLogic.Services.Abstract;
+using Manicure.Common.Domain;
+using Manicure.Web.Models;
 
 namespace Manicure.Web.Controllers
 {
     [RoutePrefix("price")]
     public class PriceController : Controller
     {
+        private readonly IProcedureService _procedureService;
+
+        public PriceController(IProcedureService procedureService)
+        {
+            _procedureService = procedureService;
+        }
+
         [Route("")]
+        [HttpGet]
         public ActionResult Get()
         {
-            return View();
-        }
+            var procedures = _procedureService.Get();
 
-        [Route("add")]
-        [HttpGet]
-        public ActionResult Add()
-        {
-            return View();
-        }
+            var proceduresToShow = Mapper.Map<IEnumerable<Procedure>, IEnumerable<ProcedureViewModel>>(procedures);
 
-        [Route("add")]
-        [HttpPost]
-        public ActionResult Add(string stub)
-        {
-            return View();
-        }
-
-        [Route("update")]
-        [HttpGet]
-        public ActionResult Update()
-        {
-            return View();
+            return View(proceduresToShow);
         }
 
         [Route("update")]
         [HttpPost]
-        public ActionResult Update(string stub)
+        public ActionResult Update(ProcedureViewModel procedure)
         {
-            return View();
+            var procedureToAdd = Mapper.Map<ProcedureViewModel, Procedure>(procedure);
+
+            _procedureService.Update(procedureToAdd);
+
+            return RedirectToAction("Get");
+        }
+
+        [Route("delete")]
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            _procedureService.Delete(id);
+
+            return RedirectToAction("Get");
         }
     }
 }

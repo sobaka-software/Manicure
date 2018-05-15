@@ -13,7 +13,7 @@
                 <div class="articleItem clearfix">
                     <a href="@article.Link" class="articleLink col-sm-7 col-md-8">@article.Name</a>
                     <div class="btn-holder col-sm-5 col-md-4 col-xs-12 text-right">
-                        <a class="btn btn-warning" onclick="setForUpdate('@article.Id', '@article.Name', '@article.Link')">Редактировать</a>
+                        <a class="btn btn-warning btnAddField" onclick="setForUpdate('@article.Id', '@article.Name', '@article.Link')">Редактировать</a>
                         @Html.ActionLink("Удалить", "Delete", new { id = article.Id }, new { @class = "btn btn-danger" })
                     </div>
                 </div>
@@ -26,7 +26,6 @@
         @using (Html.BeginForm("Update", "Article"))
         {
             @Html.Hidden("Id", "")
-
             <div class="addField col-sm-6 col-sm-offset-3">
                 <div class="form-group">
                     <label for="Address">
