@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Authentication\AuthProvider.cs" />
     <Compile Include="Authentication\IAuthProvider.cs" />
+    <Compile Include="Dtos\ProcedureDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Abstract\IArticleService.cs" />
     <Compile Include="Services\Abstract\IClientService.cs" />

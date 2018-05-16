@@ -7,7 +7,7 @@ namespace Manicure.Common.Domain
     {
         public int ScheduleId { get; set; }
 
-        public string MasterId { get; set; }
+        public int MasterId { get; set; }
 
         public virtual Master Master { get; set; }
 

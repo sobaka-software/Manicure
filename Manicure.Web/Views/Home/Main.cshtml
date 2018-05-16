@@ -14,22 +14,16 @@
                 <h3 class="form-title">Онлайн запись</h3>
             </div>
             <div class="form-group">
-                @Html.Editor("Date", new { htmlAttributes = new { @class = "form-control", type = "date", placeholder = "Введите название статьи" } })
             </div>
             <div class="form-group timeBlock clearfix">
-                @Html.Editor("StartTime", new { htmlAttributes = new { @class = "form-control", type = "date", placeholder = "Введите название статьи" } })
-                @Html.Editor("EndTime", new { htmlAttributes = new { @class = "form-control", type = "date", placeholder = "Введите название статьи" } })
+                @Html.Editor("Date", new { htmlAttributes = new { @class = "form-control", type = "date", placeholder = "Введите дату" } })
+                @Html.Editor("StartTime", new { htmlAttributes = new { @class = "form-control", type = "date", placeholder = "Введите время" } })
             </div>
             <div class="form-group">
                 @Html.DropDownList("ProcedureId", Model.ProceduresList, new { @class = "form-control selectManipulation" })
             </div>
             <div class="form-group">
-                <select class="form-control">
-                    <option>Выберите мастера:</option>
-                    <option>1. Иванова Ольга</option>
-                    <option>2. Петрова Анна</option>
-                    <option>3. Сидорова Марина</option>
-                </select>
+                @Html.DropDownList("MasterId", Model.MastersList, new { @class = "form-control" })
             </div>
             <button type="submit" class="btn btn-warning">Записаться</button>
         </div>

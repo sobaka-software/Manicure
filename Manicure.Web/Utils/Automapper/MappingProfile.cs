@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Manicure.BusinessLogic.Dtos;
 using Manicure.Common.Domain;
 using Manicure.Web.Models;
 
@@ -21,6 +22,12 @@ namespace Manicure.Web.Utils.Automapper
             CreateMap<User, MasterToViewViewModel>().ReverseMap();
 
             CreateMap<Procedure, ProcedureViewModel>().ReverseMap();
+
+            CreateMap<ProcedureDto, ProcedureEntryViewModel>().ReverseMap();
+
+            CreateMap<ProcedureDto, Schedule>().ReverseMap();
+
+            CreateMap<ProcedureDto, ProcedureEntry>().ReverseMap();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Manicure.BusinessLogic.Dtos;
 using Manicure.Common.Domain;
 
 namespace Manicure.BusinessLogic.Services.Abstract
@@ -7,7 +8,7 @@ namespace Manicure.BusinessLogic.Services.Abstract
     {
         IEnumerable<Procedure> Get();
 
-        void Add(ProcedureEntry procedureEntry, Schedule schedule);
+        void Add(ProcedureDto procedure);
 
         void Update(Procedure procedure);
 

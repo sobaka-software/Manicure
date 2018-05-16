@@ -1,12 +1,14 @@
 ﻿using System;
 
-namespace Manicure.Web.Models
+namespace Manicure.BusinessLogic.Dtos
 {
-    public class ProcedureEntryViewModel
+    public class ProcedureDto
     {
         public int ProcedureId { get; set; }
 
         public int MasterId { get; set; }
+
+        public string ClientLogin { get; set; }
 
         public DateTime Date { get; set; }
 

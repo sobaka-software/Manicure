@@ -10,7 +10,7 @@ namespace Manicure.Common.Domain
 
         public decimal Price { get; set; }
 
-        public string Duration { get; set; }
+        public int Duration { get; set; }
 
         public virtual ICollection<ProcedureEntry> ProcedureEntries { get; set; }
     }

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Manicure.BusinessLogic.Services.Abstract;
 using Manicure.Common.Domain;
@@ -45,10 +46,12 @@ namespace Manicure.Web.Controllers
         private SelectList MakeMastersList()
         {
             var masters = _masterService.GetAll().ToList();
-            masters.Insert(0, new Master());
-            var proceduresList = new SelectList(masters, "MasterId", "MasterName");
 
-            return proceduresList;
+            var mastersList = masters.Select(master => new SelectListItem { Value = master.MasterId.ToString(), Text = master.User.FirstName + " " + master.User.LastName }).ToList();
+
+            mastersList.Insert(0, new SelectListItem { Value = "0", Text = "Выберите мастера" });
+
+            return new SelectList(mastersList, "Value", "Text");
         }
     }
 }
