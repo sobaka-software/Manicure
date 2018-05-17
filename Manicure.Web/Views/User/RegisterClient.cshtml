@@ -1,0 +1,60 @@
+﻿@model UserViewModel
+
+@{
+    ViewBag.Title = "RegisterClient";
+}
+
+<main class="main">
+    @using (Html.BeginForm("RegisterClient", "User", FormMethod.Post, new { @class = "registrNewForm col-xs-12 col-sm-6 col-md-6 col-lg-4", enctype = "multipart/form-data" }))
+    {
+        <input type="hidden" value="Client" name="Role" />
+        <div class="form-group">
+            <label for="Login">
+                Логин:
+            </label>
+            @Html.EditorFor(u => u.Login, new { htmlAttributes = new { @class = "form-control", placeholder = "Введите логин" } })
+        </div>
+        <div class="form-group">
+            <label for="Password">
+                Пароль:
+            </label>
+            @Html.EditorFor(u => u.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Введите пароль", type = "password" } })
+        </div>
+        <div class="form-group">
+            <label for="ConfirmPassword">
+                Подтверждение пароля:
+            </label>
+            @Html.EditorFor(u => u.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Введите подтверждение пароля", type = "password" } })
+        </div>
+        <div class="form-group">
+            <label for="regNameUser">
+                Имя:
+            </label>
+            @Html.EditorFor(u => u.FirstName, new { htmlAttributes = new { @class = "form-control", placeholder = "Введите имя" } })
+        </div>
+        <div class="form-group">
+            <label for="regNameUser">
+                Фамилия:
+            </label>
+            @Html.EditorFor(u => u.LastName, new { htmlAttributes = new { @class = "form-control", placeholder = "Введите фамилию" } })
+        </div>
+        <div class="form-group">
+            <label for="regNameUser">
+                Номер телефона:
+            </label>
+            @Html.EditorFor(u => u.PhoneNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Введите номер телефона", type = "text" } })
+        </div>
+        <div class="form-group">
+            <label for="regNameUser">
+                Email:
+            </label>
+            @Html.EditorFor(u => u.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Введите email", type = "email" } })
+        </div>
+
+        <div class="form-group text-center">
+            <input type="submit" class="btn btn-md btn-warning btnAddUser" value="Добавить" />
+            <input type="reset" class="btn btn-md btn-danger btnCleanUser" value="Очистить" />
+        </div>
+    }
+</main>
+

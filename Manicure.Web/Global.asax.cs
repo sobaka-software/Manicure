@@ -2,7 +2,6 @@
 using System.Configuration;
 using System.Security.Principal;
 using System.Web.Mvc;
-using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using AutoMapper;
@@ -21,7 +20,6 @@ namespace Manicure.Web
             base.OnApplicationStarted();
 
             AreaRegistration.RegisterAllAreas();
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             Mapper.Initialize(cfg => cfg.AddProfile(new MappingProfile()));
         }

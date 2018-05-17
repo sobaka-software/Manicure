@@ -19,9 +19,9 @@ namespace Manicure.Web.Controllers
         private readonly IMasterService _masterService;
 
         public UserController(
-            IAuthProvider authProvider, 
-            IUserService userService, 
-            IClientService clientService, 
+            IAuthProvider authProvider,
+            IUserService userService,
+            IClientService clientService,
             IMasterService masterService)
         {
             _authProvider = authProvider;
@@ -48,46 +48,59 @@ namespace Manicure.Web.Controllers
 
         [HttpGet]
         [Route("register")]
-        public ActionResult Register()
+        public ActionResult RegisterClient()
         {
             return View();
         }
 
         [HttpPost]
         [Route("register")]
-        public ActionResult Register(UserViewModel user)
+        public ActionResult RegisterClient(UserViewModel user)
         {
             if (!ModelState.IsValid)
             {
                 return View(user);
             }
 
-            if (string.Equals("Master", user.Role, StringComparison.CurrentCultureIgnoreCase))
+            var userToAdd = Mapper.Map<UserViewModel, User>(user);
+
+            _userService.Create(userToAdd);
+
+            var clientToAdd = Mapper.Map<UserViewModel, Client>(user);
+
+            _clientService.Add(clientToAdd, user.Login);
+
+            return RedirectToAction("Main", "Home");
+        }
+
+        [HttpGet]
+        [Route("master/register")]
+        public ActionResult RegisterMaster()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Route("master/register")]
+        public ActionResult RegisterMaster(UserViewModel user)
+        {
+            if (!ModelState.IsValid)
             {
-                var userToAdd = Mapper.Map<UserViewModel, User>(user);
-
-                _userService.Create(userToAdd);
-
-                var masterToAdd = Mapper.Map<UserViewModel, Master>(user);
-
-                using (var binaryReader = new BinaryReader(Request.Files[0].InputStream))
-                {
-                    masterToAdd.Photo = binaryReader.ReadBytes(Request.Files[0].ContentLength);
-                }
-
-                _masterService.Add(masterToAdd, user.Login);
+                return View(user);
             }
 
-            if (string.Equals("Client", user.Role, StringComparison.CurrentCultureIgnoreCase))
+            var userToAdd = Mapper.Map<UserViewModel, User>(user);
+
+            _userService.Create(userToAdd);
+
+            var masterToAdd = Mapper.Map<UserViewModel, Master>(user);
+
+            using (var binaryReader = new BinaryReader(Request.Files[0].InputStream))
             {
-                var userToAdd = Mapper.Map<UserViewModel, User>(user);
-
-                _userService.Create(userToAdd);
-
-                var clientToAdd = Mapper.Map<UserViewModel, Client>(user);
-
-                _clientService.Add(clientToAdd, user.Login);
+                masterToAdd.Photo = binaryReader.ReadBytes(Request.Files[0].ContentLength);
             }
+
+            _masterService.Add(masterToAdd, user.Login);
 
             return RedirectToAction("Main", "Home");
         }

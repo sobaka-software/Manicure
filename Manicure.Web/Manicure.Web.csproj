@@ -135,6 +135,8 @@
     <Content Include="Content\Slick\fonts\slick.svg" />
     <Content Include="Content\Slick\slick-theme.css" />
     <Content Include="Content\Slick\slick.css" />
+    <Content Include="Content\wickedpicker.css" />
+    <Content Include="fonts\fontello.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -158,6 +160,9 @@
     <Content Include="Content\fonts\icomoon.eot" />
     <Content Include="Content\fonts\icomoon.ttf" />
     <Content Include="Content\fonts\icomoon.woff" />
+    <Content Include="fonts\fontello.eot" />
+    <Content Include="fonts\fontello.ttf" />
+    <Content Include="fonts\fontello.woff" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -167,13 +172,13 @@
     <Content Include="Scripts\Site.js" />
     <Content Include="Scripts\Slick\slick.js" />
     <Content Include="Scripts\Slick\slick.min.js" />
+    <Content Include="Scripts\wickedpicker.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Home\Main.cshtml" />
     <Content Include="Views\Price\Get.cshtml" />
     <Content Include="Views\Masters\Get.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -216,9 +221,10 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Contact\Get.cshtml" />
     <Content Include="Views\Article\Get.cshtml" />
-    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\RegisterClient.cshtml" />
     <Content Include="Views\User\UserProfile.cshtml" />
     <Content Include="Views\Course\Get.cshtml" />
+    <Content Include="Views\User\RegisterMaster.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

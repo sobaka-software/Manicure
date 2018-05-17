@@ -1,12 +1,13 @@
 ﻿@model UserViewModel
 
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "RegisterMaster";
 }
 
 <main class="main">
-    @using (Html.BeginForm("Register", "User", FormMethod.Post, new { @class = "registrNewForm col-xs-12 col-sm-6 col-md-6 col-lg-4", enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("RegisterMaster", "User", FormMethod.Post, new { @class = "registrNewForm col-xs-12 col-sm-6 col-md-6 col-lg-4", enctype = "multipart/form-data" }))
     {
+        <input type="hidden" value="Master" name="Role" />
         <div class="form-group">
             <label for="Login">
                 Логин:
@@ -42,18 +43,6 @@
                 Номер телефона:
             </label>
             @Html.EditorFor(u => u.PhoneNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Введите номер телефона", type = "text" } })
-        </div>
-        <div class="form-group">
-            <label for="regNameUser">
-                Роль:
-            </label>
-            @Html.EditorFor(u => u.Role, new { htmlAttributes = new { @class = "form-control", placeholder = "Введите роль" } })
-        </div>
-        <div class="form-group">
-            <label for="regNameUser">
-                Email:
-            </label>
-            @Html.EditorFor(u => u.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Введите email", type = "email" } })
         </div>
         <div class="form-group">
             <label for="regNameUser">
