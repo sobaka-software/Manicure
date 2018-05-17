@@ -50,7 +50,7 @@
         speed: 300,
         centerMode: true,
        variableWidth: true,
-       adaptiveHeight: true,
+        adaptiveHeight: false,
         autoplay: false,
         slidesToShow: 3,
         slidesToScroll: 1,
@@ -80,4 +80,5 @@
             }
         ]
     });
+    
 });

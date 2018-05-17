@@ -70,7 +70,7 @@
                         <img src="@imgSrc" alt="1" />
                         <p class="image-description">
                             @exampleWork.Description<br />
-                            @Html.ActionLink("Удалить фото", "DeleteExampleWork", "Photo", new { id = exampleWork.WorkId }, new { htmlattributes = new { @class = "btn btn-danger remotePhoto" } })
+                            @Html.ActionLink("Удалить фото", "DeleteExampleWork", "Photo", new { id = exampleWork.WorkId }, new { @class = "btn btn-danger remotePhoto" })
                         </p>
                     </div>
                 }
