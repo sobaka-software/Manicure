@@ -1,35 +1,58 @@
-﻿@{
+﻿@model UserProfileViewModel
+
+@{
     ViewBag.Title = "UserProfile";
 }
 
 <main class="main userProfileContainer">
     <div class="row">
-        <div class="col-sm-6 text-center">
-            <div class="text-center">
-            <img src="http://via.placeholder.com/350x250" alt="5" /> 
-            </div>
+        <div class="col-sm-4 text-center">
+            @if (string.Equals(Model.Role, "Master", StringComparison.InvariantCultureIgnoreCase))
+            {
+                <p class="userProfileDesclription">
+                    Мастер
+                </p>
+            }
+            <p class="userProfileDesclription h3">
+                @Model.FirstName @Model.LastName
+            </p>
+            @if (Model.Photo != null && Model.Photo.Length > 0)
+            {
+                var base64 = Convert.ToBase64String(Model.Photo);
+                var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+                <div class="text-center">
+                    <img src="@imgSrc" alt="5" />
+                </div>
+            }
             <p class="userProfileDesclription">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                Lorem Ipsum has been the industry's standard dummy text ever since
-            </p>   
+                @Model.Description
+            </p>
         </div>
-        <div class="col-sm-6">
-            <div class="processBlock">
-                <h3 class="processNames text-center">Процессы:</h3>
-                <ol class="userList">
-                    <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
-                    <li>Lorem Ipsum is simply dummy text of the printing.   </li>
-                    <li>Lorem Ipsum is simply dummy text of the printing.   </li>
-                </ol>
-            </div>
-            <div class="coursesBlock">
-                <h3 class="coursesNames text-center">Курсы:</h3>
-                <ol class="userList">
-                    <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
-                    <li>Lorem Ipsum is simply dummy text of the printing.   </li>
-                    <li>Lorem Ipsum is simply dummy text of the printing.   </li>
-                </ol>
-            </div>
+        <div class="col-sm-6 col-sm-offset-2">
+            @if (Model.ProcedureEntries != null && Model.ProcedureEntries.Any())
+            {
+                <div class="processBlock">
+                    <h3 class="processNames text-center">Процедуры:</h3>
+                    <ol class="userList">
+                        @foreach (var proc in Model.ProcedureEntries)
+                        {
+                            <li>@proc.Procedure.ProcedureName</li>
+                        }
+                    </ol>
+                </div>
+            }
+            @if (Model.CourseEntries != null && Model.CourseEntries.Any())
+            {
+                <div class="coursesBlock">
+                    <h3 class="coursesNames text-center">Курсы:</h3>
+                    <ol class="userList">
+                        @foreach (var proc in Model.CourseEntries)
+                        {
+                            <li>@proc.Course.CourseName</li>
+                        }
+                    </ol>
+                </div>
+            }
         </div>
     </div>
     <div class="row">
@@ -37,41 +60,126 @@
             Фото работ <a href="#" class="btn btn-warning addPhoto" data-toggle="modal" data-target="#addPhotoWorksModal">Добавить фото</a>
         </h3>
         <div class="gallery-photo">
-            <div><img src="http://via.placeholder.com/250x250" alt="1" /><p class="image-description">Lorem ipsum dolor sit.<br/>
-                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="2" /><p class="image-description"> Lorem ipsum dolor sit amet.<br />
-                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="3" /><p class="image-description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
-                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="4" /><p class="image-description">Lorem ipsum dolor sit.<br />
-                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="5" /><p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
-                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="6" /><p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
-                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="7" /><p class="image-description">Lorem ipsum dolor sit.<br />
-                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
+            @if (Model.Diplomas != null)
+            {
+                foreach (var exampleWork in Model.ExampleWorks)
+                {
+                    var base64 = Convert.ToBase64String(exampleWork.Photo);
+                    var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+                    <div>
+                        <img src="@imgSrc" alt="1" />
+                        <p class="image-description">
+                            @exampleWork.Description<br />
+                            @Html.ActionLink("Удалить фото", "DeleteExampleWork", "Photo", new { id = exampleWork.WorkId }, new { htmlattributes = new { @class = "btn btn-danger remotePhoto" } })
+                        </p>
+                    </div>
+                }
+            }
+            <div>
+                <img src="http://via.placeholder.com/350x250" alt="2" />
+                <p class="image-description">
+                    Lorem ipsum dolor sit amet.<br />
+                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
+                </p>
+            </div>
+            <div>
+                <img src="http://via.placeholder.com/350x250" alt="3" />
+                <p class="image-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
+                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
+                </p>
+            </div>
+            <div>
+                <img src="http://via.placeholder.com/350x250" alt="4" />
+                <p class="image-description">
+                    Lorem ipsum dolor sit.<br />
+                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
+                </p>
+            </div>
+            <div>
+                <img src="http://via.placeholder.com/350x250" alt="5" />
+                <p class="image-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
+                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
+                </p>
+            </div>
+            <div>
+                <img src="http://via.placeholder.com/350x250" alt="6" />
+                <p class="image-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
+                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
+                </p>
+            </div>
+            <div>
+                <img src="http://via.placeholder.com/350x250" alt="7" />
+                <p class="image-description">
+                    Lorem ipsum dolor sit.<br />
+                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
+                </p>
+            </div>
         </div>
     </div>
     <div class="row">
         <h3 class="userDiplomsTitle text-center">
-           Дипломы <a href="#" class="btn btn-warning addPhotoDiploms" data-toggle="modal" data-target="#addPhotoDiplomsModal">Добавить фото</a>
+            Дипломы <a href="#" class="btn btn-warning addPhotoDiploms" data-toggle="modal" data-target="#addPhotoDiplomsModal">Добавить фото</a>
         </h3>
         <div class="gallery-diploms">
-            <div><img src="http://via.placeholder.com/250x250" alt="1" /><p class="image-description">Lorem ipsum dolor sit.<br />
-                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="2" /><p class="image-description"> Lorem ipsum dolor sit amet.<br />
-                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="3" /><p class="image-description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
-                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="4" /><p class="image-description">Lorem ipsum dolor sit.<br />
-                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="5" /><p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
-                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="6" /><p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
-                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
-            <div><img src="http://via.placeholder.com/350x250" alt="7" /><p class="image-description">Lorem ipsum dolor sit.<br />
-                <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a></p></div>
+            @if (Model.Diplomas != null)
+            {
+                foreach (var diploma in Model.Diplomas)
+                {
+                    var base64 = Convert.ToBase64String(diploma.ScanDiploma);
+                    var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+                    <div>
+                        <img src="@imgSrc" alt="1" width="350" height="150" />
+                        <p class="image-description">
+                            @Html.ActionLink("Удалить фото", "DeleteDiploma", "Photo", new { id = diploma.DiplomaId }, new { @class = "btn btn-danger remotePhoto" })
+                        </p>
+                    </div>
+                }
+            }
+            <div>
+                <img src="http://via.placeholder.com/350x250" alt="2" />
+                <p class="image-description">
+                    Lorem ipsum dolor sit amet.<br />
+                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
+                </p>
+            </div>
+            <div>
+                <img src="http://via.placeholder.com/350x250" alt="3" />
+                <p class="image-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
+                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
+                </p>
+            </div>
+            <div>
+                <img src="http://via.placeholder.com/350x250" alt="4" />
+                <p class="image-description">
+                    Lorem ipsum dolor sit.<br />
+                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
+                </p>
+            </div>
+            <div>
+                <img src="http://via.placeholder.com/350x250" alt="5" />
+                <p class="image-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
+                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
+                </p>
+            </div>
+            <div>
+                <img src="http://via.placeholder.com/350x250" alt="6" />
+                <p class="image-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
+                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
+                </p>
+            </div>
+            <div>
+                <img src="http://via.placeholder.com/350x250" alt="7" />
+                <p class="image-description">
+                    Lorem ipsum dolor sit.<br />
+                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
+                </p>
+            </div>
         </div>
     </div>
 
@@ -85,18 +193,26 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <input type="text" name="name" value="" class="form-control">
+                @using (Html.BeginForm("AddExampleWork", "Photo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="Description">
+                                Описание
+                            </label>
+                            @Html.Editor("WorkDescription", null, new { htmlattributes = new { @class = "form-control", placeholder = "Введите описание работы" } })
+                        </div>
+                        <div class="form-group">
+                            <label for="Photo">
+                                Фото работ
+                            </label>
+                            @Html.TextBox("Photo", null, new { @class = "form-control", type = "file" })
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="text" name="name" value="" class="form-control">
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-warning" value="Принять" />
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">Добавить</button>
-                    <button type="button" class="btn btn-danger">Очистить</button>
-                </div>
+                }
             </div>
         </div>
     </div>
@@ -110,20 +226,22 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <input type="text" name="name" value="" class="form-control">
+                @using (Html.BeginForm("AddDiploma", "Photo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="Photos">
+                                Фото дипломов
+                            </label>
+                            @Html.TextBox("Photos", null, new { @class = "form-control", type = "file", multiple = "multiple" })
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="text" name="name" value="" class="form-control">
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-warning" value="Принять" />
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">Добавить</button>
-                    <button type="button" class="btn btn-danger">Очистить</button>
-                </div>
+                }
             </div>
         </div>
     </div>
-   
+
 </main>

@@ -1,32 +1,61 @@
-﻿
+﻿@model IEnumerable<GalleryViewModel>
+
 @{
     ViewBag.Title = "Get";
 }
 
 <main class="main">
-    <div class="row block-master">
-        <div class="col-md-5">
-            <img src="http://via.placeholder.com/350x250" alt="Master" />
+    @if (Model.Any())
+    {
+        var base64Main = Convert.ToBase64String(Model.FirstOrDefault().Photo);
+        var imgSrcMain = string.Format("data:image/gif;base64,{0}", base64Main);
+        <div class="row block-master">
+            <div class="col-md-5">
+                <img src="@imgSrcMain" alt="Master" id="mainPhoto" />
+            </div>
+            <div class="col-md-7">
+                <h4 class="name-master">Описание</h4>
+                <p class="about-master">
+                    @Model.FirstOrDefault().WorkDescription
+                </p>
+            </div>
         </div>
-        <div class="col-md-7">
-            <h4 class="name-master">Lorem ipsum dolor</h4>
-            <p class="about-master">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia commodi quasi dignissimos aliquam eligendi architecto officiis maxime qui, natus eaque blanditiis consequatur dolorem cum nostrum.
-                Lorem ipsum dolor sit.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia commodi quasi dignissimos aliquam eligendi architecto officiis maxime qui, natus eaque blanditiis consequatur dolorem cum nostrum.
-                Lorem ipsum dolor sit.
-            </p>
-        </div>
-    </div>
-    
+    }
+
     <div class="gallery-main">
-        <div><img src="http://via.placeholder.com/250x250" alt="1" /><p class="image-description">Lorem ipsum dolor sit.</p></div>
-        <div><img src="http://via.placeholder.com/350x250" alt="2" /><p class="image-description"> Lorem ipsum dolor sit amet.</p></div>
-        <div><img src="http://via.placeholder.com/350x250" alt="3" /><p class="image-description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
-        <div><img src="http://via.placeholder.com/350x250" alt="4" /><p class="image-description">Lorem ipsum dolor sit.</p></div>
-        <div><img src="http://via.placeholder.com/350x250" alt="5" /><p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
-        <div><img src="http://via.placeholder.com/350x250" alt="6" /><p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
-        <div><img src="http://via.placeholder.com/350x250" alt="7" /><p class="image-description">Lorem ipsum dolor sit.</p></div>
+        @foreach (var photo in Model)
+        {
+            var base64 = Convert.ToBase64String(photo.Photo);
+            var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+            <div>
+                <img src="@imgSrc" alt="1" />
+                <p class="image-description">@photo.WorkDescription</p>
+            </div>
+        }
+        <div>
+            <img src="http://via.placeholder.com/350x250" alt="2" />
+            <p class="image-description"> Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div>
+            <img src="http://via.placeholder.com/350x250" alt="3" />
+            <p class="image-description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+        <div>
+            <img src="http://via.placeholder.com/350x250" alt="4" />
+            <p class="image-description">Lorem ipsum dolor sit.</p>
+        </div>
+        <div>
+            <img src="http://via.placeholder.com/350x250" alt="5" />
+            <p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+        <div>
+            <img src="http://via.placeholder.com/350x250" alt="6" />
+            <p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+        <div>
+            <img src="http://via.placeholder.com/350x250" alt="7" />
+            <p class="image-description">Lorem ipsum dolor sit.</p>
+        </div>
     </div>
 </main>
 

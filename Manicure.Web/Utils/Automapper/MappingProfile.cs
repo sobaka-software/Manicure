@@ -28,6 +28,14 @@ namespace Manicure.Web.Utils.Automapper
             CreateMap<ProcedureDto, Schedule>().ReverseMap();
 
             CreateMap<ProcedureDto, ProcedureEntry>().ReverseMap();
+
+            CreateMap<User, UserProfileViewModel>().ReverseMap();
+
+            CreateMap<ExampleWork, ExampleWorkViewModel>().ForMember(c => c.WorkDescription, opt => opt
+                .MapFrom(g => g.Description)).ReverseMap();
+
+            CreateMap<ExampleWork, GalleryViewModel>().ForMember(c => c.WorkDescription, opt => opt
+                .MapFrom(g => g.Description)).ReverseMap();
         }
     }
 }

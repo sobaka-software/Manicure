@@ -42,5 +42,10 @@ namespace Manicure.BusinessLogic.Services.Concrete
         {
             return _userRepository.Get(u => u.Role == role);
         }
+
+        public User GetCurrent(string login)
+        {
+            return _userRepository.GetFirst(u => u.Login == login);
+        }
     }
 }

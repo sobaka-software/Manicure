@@ -12,5 +12,7 @@ namespace Manicure.BusinessLogic.Services.Abstract
         User GetBy(string login, string password);
 
         IEnumerable<User> GetBy(string role);
+
+        User GetCurrent(string login);
     }
 }

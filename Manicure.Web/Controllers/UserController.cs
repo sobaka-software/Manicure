@@ -105,7 +105,27 @@ namespace Manicure.Web.Controllers
         [Route("profile")]
         public ActionResult UserProfile()
         {
-            return View();
+            var user = _userService.GetCurrent(User.Identity.Name);
+
+            var userToShow = Mapper.Map<User, UserProfileViewModel>(user);
+
+            if (string.Equals(user.Role, "Master", StringComparison.CurrentCultureIgnoreCase))
+            {
+                userToShow.Diplomas = user.Master.Diplomas;
+                userToShow.Description = user.Master.Description;
+                userToShow.Photo = user.Master.Photo;
+                userToShow.ExampleWorks = user.Master.ExampleWorks;
+            }
+            else
+            {
+                if (string.Equals(user.Role, "Client", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    userToShow.CourseEntries = user.Client.CourseEntries;
+                    userToShow.ProcedureEntries = user.Client.ProcedureEntries;
+                }
+            }
+
+            return View(userToShow);
         }
     }
 }
