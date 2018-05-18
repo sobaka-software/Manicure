@@ -15,7 +15,7 @@
             </div>
             <div class="col-md-7">
                 <h4 class="name-master">Описание</h4>
-                <p class="about-master">
+                <p class="about-master" id="descr">
                     @Model.FirstOrDefault().WorkDescription
                 </p>
             </div>
@@ -27,37 +27,17 @@
         {
             var base64 = Convert.ToBase64String(photo.Photo);
             var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
-            <div>
+            <div onclick="setPhoto('@imgSrc', '@photo.WorkDescription')">
                 <img src="@imgSrc" alt="1" />
                 <p class="image-description">@photo.WorkDescription</p>
             </div>
         }
-        <div>
-            <img src="http://via.placeholder.com/350x250" alt="2" />
-            <p class="image-description"> Lorem ipsum dolor sit amet.</p>
-        </div>
-        <div>
-            <img src="http://via.placeholder.com/350x250" alt="3" />
-            <p class="image-description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
-        <div>
-            <img src="http://via.placeholder.com/350x250" alt="4" />
-            <p class="image-description">Lorem ipsum dolor sit.</p>
-        </div>
-        <div>
-            <img src="http://via.placeholder.com/350x250" alt="5" />
-            <p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
-        <div>
-            <img src="http://via.placeholder.com/350x250" alt="6" />
-            <p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
-        <div>
-            <img src="http://via.placeholder.com/350x250" alt="7" />
-            <p class="image-description">Lorem ipsum dolor sit.</p>
-        </div>
     </div>
 </main>
 
-
-
+<script>
+    function setPhoto(img, desc) {
+        $('#mainPhoto').attr('src', img);
+        $('#descr').text(desc);
+    }
+</script>

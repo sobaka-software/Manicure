@@ -27,6 +27,11 @@ namespace Manicure.DataAccess.Concrete
             _dbSet.Remove(entity);
         }
 
+        public void Delete(T entity)
+        {
+            _dbSet.Remove(entity);
+        }
+
         public bool Any(System.Linq.Expressions.Expression<System.Func<T, bool>> filter)
         {
             return _dbSet.Any(filter);

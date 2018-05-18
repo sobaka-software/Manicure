@@ -68,7 +68,7 @@ namespace Manicure.BusinessLogic.Services.Concrete
 
         public void Delete(int id)
         {
-            _procedureRepository.Delete(id);
+            _procedureEntryRepository.Delete(id);
             _unitOfWork.SaveChanges();
         }
     }

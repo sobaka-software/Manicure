@@ -55,6 +55,7 @@
     <Compile Include="Services\Abstract\IArticleService.cs" />
     <Compile Include="Services\Abstract\IClientService.cs" />
     <Compile Include="Services\Abstract\IContactService.cs" />
+    <Compile Include="Services\Abstract\ICourseService.cs" />
     <Compile Include="Services\Abstract\IMasterService.cs" />
     <Compile Include="Services\Abstract\IPhotoService.cs" />
     <Compile Include="Services\Abstract\IProcedureService.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Services\Concrete\ArticleService.cs" />
     <Compile Include="Services\Concrete\ClientService.cs" />
     <Compile Include="Services\Concrete\ContactService.cs" />
+    <Compile Include="Services\Concrete\CourseService.cs" />
     <Compile Include="Services\Concrete\MasterService.cs" />
     <Compile Include="Services\Concrete\PhotoService.cs" />
     <Compile Include="Services\Concrete\ProcedureService.cs" />

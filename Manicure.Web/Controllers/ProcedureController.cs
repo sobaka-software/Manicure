@@ -28,5 +28,14 @@ namespace Manicure.Web.Controllers
 
             return RedirectToAction("Main", "Home");
         }
+
+        [HttpGet]
+        [Route("delete")]
+        public ActionResult Delete(int id)
+        {
+            _procedureService.Delete(id);
+
+            return RedirectToAction("UserProfile", "User");
+        }
     }
 }

@@ -16,6 +16,10 @@
             <p class="userProfileDesclription h3">
                 @Model.FirstName @Model.LastName
             </p>
+            @if (User.IsInRole("Administrator"))
+            {
+                @Html.ActionLink("Добавить мастера", "RegisterMaster", "User", null, new { @class = "btn btn-danger remotePhoto" })
+            }
             @if (Model.Photo != null && Model.Photo.Length > 0)
             {
                 var base64 = Convert.ToBase64String(Model.Photo);
@@ -36,7 +40,7 @@
                     <ol class="userList">
                         @foreach (var proc in Model.ProcedureEntries)
                         {
-                            <li>@proc.Procedure.ProcedureName</li>
+                            <li>@proc.Procedure.ProcedureName @Html.ActionLink("Отменить", "Delete", "Procedure", new { id = proc.ProcedureId }, null)</li>
                         }
                     </ol>
                 </div>
@@ -46,9 +50,9 @@
                 <div class="coursesBlock">
                     <h3 class="coursesNames text-center">Курсы:</h3>
                     <ol class="userList">
-                        @foreach (var proc in Model.CourseEntries)
+                        @foreach (var course in Model.CourseEntries)
                         {
-                            <li>@proc.Course.CourseName</li>
+                            <li>@course.Course.CourseName @Html.ActionLink("Отменить", "Delete", "Course", new { id = course.CourseId }, null)</li>
                         }
                     </ol>
                 </div>
@@ -60,7 +64,7 @@
             Фото работ <a href="#" class="btn btn-warning addPhoto" data-toggle="modal" data-target="#addPhotoWorksModal">Добавить фото</a>
         </h3>
         <div class="gallery-photo">
-            @if (Model.Diplomas != null)
+            @if (Model.ExampleWorks != null)
             {
                 foreach (var exampleWork in Model.ExampleWorks)
                 {
@@ -75,48 +79,6 @@
                     </div>
                 }
             }
-            <div>
-                <img src="http://via.placeholder.com/350x250" alt="2" />
-                <p class="image-description">
-                    Lorem ipsum dolor sit amet.<br />
-                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
-                </p>
-            </div>
-            <div>
-                <img src="http://via.placeholder.com/350x250" alt="3" />
-                <p class="image-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
-                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
-                </p>
-            </div>
-            <div>
-                <img src="http://via.placeholder.com/350x250" alt="4" />
-                <p class="image-description">
-                    Lorem ipsum dolor sit.<br />
-                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
-                </p>
-            </div>
-            <div>
-                <img src="http://via.placeholder.com/350x250" alt="5" />
-                <p class="image-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
-                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
-                </p>
-            </div>
-            <div>
-                <img src="http://via.placeholder.com/350x250" alt="6" />
-                <p class="image-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
-                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
-                </p>
-            </div>
-            <div>
-                <img src="http://via.placeholder.com/350x250" alt="7" />
-                <p class="image-description">
-                    Lorem ipsum dolor sit.<br />
-                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
-                </p>
-            </div>
         </div>
     </div>
     <div class="row">
@@ -138,48 +100,6 @@
                     </div>
                 }
             }
-            <div>
-                <img src="http://via.placeholder.com/350x250" alt="2" />
-                <p class="image-description">
-                    Lorem ipsum dolor sit amet.<br />
-                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
-                </p>
-            </div>
-            <div>
-                <img src="http://via.placeholder.com/350x250" alt="3" />
-                <p class="image-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
-                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
-                </p>
-            </div>
-            <div>
-                <img src="http://via.placeholder.com/350x250" alt="4" />
-                <p class="image-description">
-                    Lorem ipsum dolor sit.<br />
-                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
-                </p>
-            </div>
-            <div>
-                <img src="http://via.placeholder.com/350x250" alt="5" />
-                <p class="image-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
-                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
-                </p>
-            </div>
-            <div>
-                <img src="http://via.placeholder.com/350x250" alt="6" />
-                <p class="image-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br />
-                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
-                </p>
-            </div>
-            <div>
-                <img src="http://via.placeholder.com/350x250" alt="7" />
-                <p class="image-description">
-                    Lorem ipsum dolor sit.<br />
-                    <a href="#" class="btn btn-danger remotePhoto">Удалить фото</a>
-                </p>
-            </div>
         </div>
     </div>
 

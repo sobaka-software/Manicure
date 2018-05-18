@@ -36,6 +36,8 @@ namespace Manicure.Web.Utils.Automapper
 
             CreateMap<ExampleWork, GalleryViewModel>().ForMember(c => c.WorkDescription, opt => opt
                 .MapFrom(g => g.Description)).ReverseMap();
+
+            CreateMap<Course, CourseViewModel>().ReverseMap();
         }
     }
 }

@@ -12,6 +12,8 @@ namespace Manicure.DataAccess.Abstract
 
         void Delete(int id);
 
+        void Delete(T entity);
+
         IEnumerable<T> Get(Expression<Func<T, bool>> filter);
 
         T GetFirst(Expression<Func<T, bool>> filter);

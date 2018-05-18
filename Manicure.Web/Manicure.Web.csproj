@@ -196,6 +196,7 @@
     </Compile>
     <Compile Include="Models\ClientViewModel.cs" />
     <Compile Include="Models\ControlDataViewModel.cs" />
+    <Compile Include="Models\CourseViewModel.cs" />
     <Compile Include="Models\DiplomaViewModel.cs" />
     <Compile Include="Models\ExampleWorkViewModel.cs" />
     <Compile Include="Models\GalleryViewModel.cs" />
