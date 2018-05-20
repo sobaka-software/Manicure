@@ -8,5 +8,7 @@ namespace Manicure.BusinessLogic.Services.Abstract
         void Add(ReviewClient reviewClient, string userLogin);
 
         IEnumerable<ReviewClient> Get();
+
+        void Delete(int id);
     }
 }

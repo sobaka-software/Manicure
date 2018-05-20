@@ -11,7 +11,7 @@
         var imgSrcMain = string.Format("data:image/gif;base64,{0}", base64Main);
         <div class="row block-master">
             <div class="col-md-5">
-                <img src="@imgSrcMain" alt="Master" id="mainPhoto" />
+                <img src="@imgSrcMain" alt="Master" id="mainPhoto"/>
             </div>
             <div class="col-md-7">
                 <h4 class="name-master">Описание</h4>
@@ -21,6 +21,11 @@
             </div>
         </div>
     }
+    else
+    {
+        <div class="text-center h3">Фото работ нет</div>
+    }
+
 
     <div class="gallery-main">
         @foreach (var photo in Model)

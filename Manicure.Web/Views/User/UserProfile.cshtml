@@ -7,7 +7,7 @@
 <main class="main userProfileContainer">
     <div class="row">
         <div class="col-sm-4 text-center">
-            @if (string.Equals(Model.Role, "Master", StringComparison.InvariantCultureIgnoreCase))
+            @if (User.IsInRole("Master"))
             {
                 <p class="userProfileDesclription">
                     Мастер
@@ -33,135 +33,145 @@
             </p>
         </div>
         <div class="col-sm-6 col-sm-offset-2">
-            @if (Model.ProcedureEntries != null && Model.ProcedureEntries.Any())
-            {
-                <div class="processBlock">
-                    <h3 class="processNames text-center">Процедуры:</h3>
+            <div class="processBlock">
+                <h3 class="processNames text-center">Процедуры:</h3>
+                @if (Model.ProcedureEntries != null && Model.ProcedureEntries.Any())
+                {
                     <ol class="userList">
                         @foreach (var proc in Model.ProcedureEntries)
                         {
                             <li>@proc.Procedure.ProcedureName @Html.ActionLink("Отменить", "Delete", "Procedure", new { id = proc.ProcedureId }, null)</li>
                         }
                     </ol>
-                </div>
-            }
-            @if (Model.CourseEntries != null && Model.CourseEntries.Any())
-            {
-                <div class="coursesBlock">
-                    <h3 class="coursesNames text-center">Курсы:</h3>
+                }
+                else
+                {
+                    <div class="text-center h3">Отсутствуют</div>
+                }
+            </div>
+            <div class="coursesBlock">
+                <h3 class="coursesNames text-center">Курсы:</h3>
+                @if (Model.CourseEntries != null && Model.CourseEntries.Any())
+                {
                     <ol class="userList">
                         @foreach (var course in Model.CourseEntries)
                         {
                             <li>@course.Course.CourseName @Html.ActionLink("Отменить", "Delete", "Course", new { id = course.CourseId }, null)</li>
                         }
                     </ol>
-                </div>
-            }
-        </div>
-    </div>
-    <div class="row">
-        <h3 class="userPhotoTitle text-center">
-            Фото работ <a href="#" class="btn btn-warning addPhoto" data-toggle="modal" data-target="#addPhotoWorksModal">Добавить фото</a>
-        </h3>
-        <div class="gallery-photo">
-            @if (Model.ExampleWorks != null)
-            {
-                foreach (var exampleWork in Model.ExampleWorks)
-                {
-                    var base64 = Convert.ToBase64String(exampleWork.Photo);
-                    var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
-                    <div>
-                        <img src="@imgSrc" alt="1" />
-                        <p class="image-description">
-                            @exampleWork.Description<br />
-                            @Html.ActionLink("Удалить фото", "DeleteExampleWork", "Photo", new { id = exampleWork.WorkId }, new { @class = "btn btn-danger remotePhoto" })
-                        </p>
-                    </div>
                 }
-            }
-        </div>
-    </div>
-    <div class="row">
-        <h3 class="userDiplomsTitle text-center">
-            Дипломы <a href="#" class="btn btn-warning addPhotoDiploms" data-toggle="modal" data-target="#addPhotoDiplomsModal">Добавить фото</a>
-        </h3>
-        <div class="gallery-diploms">
-            @if (Model.Diplomas != null)
-            {
-                foreach (var diploma in Model.Diplomas)
+                else
                 {
-                    var base64 = Convert.ToBase64String(diploma.ScanDiploma);
-                    var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
-                    <div>
-                        <img src="@imgSrc" alt="1" width="350" height="150" />
-                        <p class="image-description">
-                            @Html.ActionLink("Удалить фото", "DeleteDiploma", "Photo", new { id = diploma.DiplomaId }, new { @class = "btn btn-danger remotePhoto" })
-                        </p>
-                    </div>
-                }
-            }
-        </div>
-    </div>
-
-    <!-- Modal add-->
-    <div class="modal fade" id="addPhotoWorksModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">Добавить фото работ:</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                @using (Html.BeginForm("AddExampleWork", "Photo", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="Description">
-                                Описание
-                            </label>
-                            @Html.Editor("WorkDescription", null, new { htmlattributes = new { @class = "form-control", placeholder = "Введите описание работы" } })
-                        </div>
-                        <div class="form-group">
-                            <label for="Photo">
-                                Фото работ
-                            </label>
-                            @Html.TextBox("Photo", null, new { @class = "form-control", type = "file" })
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="submit" class="btn btn-warning" value="Принять" />
-                    </div>
+                    <div class="text-center h3">Отсутствуют</div>
                 }
             </div>
         </div>
     </div>
-    <!-- Modal add-->
-    <div class="modal fade" id="addPhotoDiplomsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">Добавить фото дипломов:</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                @using (Html.BeginForm("AddDiploma", "Photo", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="Photos">
-                                Фото дипломов
-                            </label>
-                            @Html.TextBox("Photos", null, new { @class = "form-control", type = "file", multiple = "multiple" })
+    @if (User.IsInRole("Master"))
+    {
+        <div class="row">
+            <h3 class="userPhotoTitle text-center">
+                Фото работ <a href="#" class="btn btn-warning addPhoto" data-toggle="modal" data-target="#addPhotoWorksModal">Добавить фото</a>
+            </h3>
+            @if (Model.ExampleWorks != null && Model.ExampleWorks.Any())
+            {
+                <div class="gallery-photo">
+                    @foreach (var exampleWork in Model.ExampleWorks)
+                    {
+                        var base64 = Convert.ToBase64String(exampleWork.Photo);
+                        var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+                        <div>
+                            <img src="@imgSrc" alt="1" />
+                            <p class="image-description">
+                                @exampleWork.Description<br />
+                                @Html.ActionLink("Удалить фото", "DeleteExampleWork", "Photo", new { id = exampleWork.WorkId }, new { @class = "btn btn-danger remotePhoto" })
+                            </p>
                         </div>
+                    }
+                </div>
+            }
+        </div>
+        <div class="row">
+            <h3 class="userDiplomsTitle text-center">
+                Дипломы <a href="#" class="btn btn-warning addPhotoDiploms" data-toggle="modal" data-target="#addPhotoDiplomsModal">Добавить фото</a>
+            </h3>
+            @if (Model.Diplomas != null && Model.Diplomas.Any())
+            {
+                <div class="gallery-diploms">
+                    @foreach (var diploma in Model.Diplomas)
+                    {
+                        var base64 = Convert.ToBase64String(diploma.ScanDiploma);
+                        var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+                        <div>
+                            <img src="@imgSrc" alt="1" width="350" height="150" />
+                            <p class="image-description">
+                                @Html.ActionLink("Удалить фото", "DeleteDiploma", "Photo", new { id = diploma.DiplomaId }, new { @class = "btn btn-danger remotePhoto" })
+                            </p>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+
+        <!-- Modal add-->
+        <div class="modal fade" id="addPhotoWorksModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">Добавить фото работ:</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div class="modal-footer">
-                        <input type="submit" class="btn btn-warning" value="Принять" />
-                    </div>
-                }
+                    @using (Html.BeginForm("AddExampleWork", "Photo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="Description">
+                                    Описание
+                                </label>
+                                @Html.Editor("WorkDescription", null, new { htmlattributes = new { @class = "form-control", placeholder = "Введите описание работы" } })
+                            </div>
+                            <div class="form-group">
+                                <label for="Photo">
+                                    Фото работ
+                                </label>
+                                @Html.TextBox("Photo", null, new { @class = "form-control", type = "file" })
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-warning" value="Принять" />
+                        </div>
+                    }
+                </div>
             </div>
         </div>
-    </div>
-
+        <!-- Modal add-->
+        <div class="modal fade" id="addPhotoDiplomsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">Добавить фото дипломов:</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @using (Html.BeginForm("AddDiploma", "Photo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="Photos">
+                                    Фото дипломов
+                                </label>
+                                @Html.TextBox("Photos", null, new { @class = "form-control", type = "file", multiple = "multiple" })
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-warning" value="Принять" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
 </main>

@@ -6,11 +6,12 @@
 
 <main class="main">
     <div class="col-md-9">
-        <h4 class="price-title">Здесь Вы можете ознакомиться с ценами нашего сервиса:</h4>
-        <div class="priceList">
-            @if (Model != null)
-            {
-                foreach (var procedure in Model)
+
+        @if (Model != null && Model.Any())
+        {
+            <h4 class="price-title">Здесь Вы можете ознакомиться с ценами нашего сервиса:</h4>
+            <div class="priceList">
+                @foreach (var procedure in Model)
                 {
                     <div class="row">
                         <p class="name-procedure col-md-7">
@@ -22,44 +23,52 @@
                         </div>
                     </div>
                 }
-            }
-        </div>
-        <div class="row">
-            <div class="col-md-12 btnAddBlock">
-                <a href="#" role="button" class="btn btn-lg btn-success btnAddField">Добавить</a>
             </div>
-            @using (Html.BeginForm("Update", "Price"))
-            {
-                @Html.Hidden("ProcedureId", "")
-                <div class="addField col-md-6">
-                    <div class="form-group">
-                        <label for="ProcedureName">
-                            Тип процедуры
-                        </label>
-                        @Html.Editor("ProcedureName", new { htmlAttributes = new { @class = "form-control", placeholder = "Введите процедуру" } })
-                    </div>
-                    <div class="form-group">
-                        <label for="Price">
-                            Стоимость
-                        </label>
-                        @Html.Editor("Price", new { htmlAttributes = new { @class = "form-control", placeholder = "Введите стоимость" } })
-                    </div>
-                    <div class="form-group">
-                        <label for="Duration">
-                            Длительность
-                        </label>
-                        @Html.Editor("Duration", new { htmlAttributes = new { @class = "form-control", placeholder = "Введите длительность" } })
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-warning btn-add" value="Принять" />
-                        <input type="reset" class="btn btn-danger btn-delete" value="Очистить" />
-                    </div>
+        }
+        else
+        {
+            <div class="text-center h3">Процедур нет</div>
+        }
+
+        @if (User.IsInRole("Administrator") || User.IsInRole("Master"))
+        {
+            <div class="row">
+                <div class="col-md-12 btnAddBlock">
+                    <a href="#" role="button" class="btn btn-lg btn-success btnAddField">Добавить</a>
                 </div>
-            }
-        </div>
+                @using (Html.BeginForm("Update", "Price"))
+                {
+                    @Html.Hidden("ProcedureId", "")
+                    <div class="addField col-md-6">
+                        <div class="form-group">
+                            <label for="ProcedureName">
+                                Тип процедуры
+                            </label>
+                            @Html.Editor("ProcedureName", new { htmlAttributes = new { @class = "form-control", placeholder = "Введите процедуру" } })
+                        </div>
+                        <div class="form-group">
+                            <label for="Price">
+                                Стоимость
+                            </label>
+                            @Html.Editor("Price", new { htmlAttributes = new { @class = "form-control", placeholder = "Введите стоимость" } })
+                        </div>
+                        <div class="form-group">
+                            <label for="Duration">
+                                Длительность
+                            </label>
+                            @Html.Editor("Duration", new { htmlAttributes = new { @class = "form-control", placeholder = "Введите длительность" } })
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-warning btn-add" value="Принять" />
+                            <input type="reset" class="btn btn-danger btn-delete" value="Очистить" />
+                        </div>
+                    </div>
+                }
+            </div>
+        }
     </div>
     <div class="col-md-3 priceImg">
-        <img src="http://via.placeholder.com/350x250" alt="Alternate Text" />
+        <img src="~/Images/price.jpeg" alt="Alternate Text" />
     </div>
 </main>
 

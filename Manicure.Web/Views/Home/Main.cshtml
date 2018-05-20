@@ -5,41 +5,53 @@
 }
 
 <main class="main">
-    <h1 class="main-title text-center">Добро пожаловать в мир красивых ногтей</h1>
+    <h1 class="main-title text-center">Добро пожаловать в студию ногтевого сервиса “NailStudio”</h1>
 
     @using (Html.BeginForm("Add", "Procedure", FormMethod.Post, new { @class = "registrationForm col-sm-6 col-md-4" }))
     {
-        <div class="formInner">
-            <div class="form-group">
-                <h3 class="form-title">Онлайн запись</h3>
+        if (User.IsInRole("Client"))
+        {
+            <div class="formInner">
+                <div class="form-group">
+                    <h3 class="form-title">Онлайн запись</h3>
+                </div>
+                <div class="form-group">
+                </div>
+                <div class="form-group timeBlock clearfix">
+                    @Html.Editor("Date", new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                    @Html.Editor("StartTime", new { htmlAttributes = new { @class = "form-control", type = "text", placeholder = "Введите время" } })
+                </div>
+                <div class="form-group">
+                    @Html.DropDownList("ProcedureId", Model.ProceduresList, new { @class = "form-control selectManipulation" })
+                </div>
+                <div class="form-group">
+                    @Html.DropDownList("MasterId", Model.MastersList, new { @class = "form-control" })
+                </div>
+                <button type="submit" class="btn btn-warning">Записаться</button>
             </div>
-            <div class="form-group">
+        }
+        else
+        {
+            <div class="formInner">
+                <div class="form-group">
+                    <h3 class="form-title text-center text-justify">Записаться на процедуру можно только клиентам</h3>
+                </div>
             </div>
-            <div class="form-group timeBlock clearfix">
-                @Html.Editor("Date", new { htmlAttributes = new { @class = "form-control", type = "date" } })
-                @Html.Editor("StartTime", new { htmlAttributes = new { @class = "form-control", type = "text", placeholder = "Введите время" } })
-            </div>
-            <div class="form-group">
-                @Html.DropDownList("ProcedureId", Model.ProceduresList, new { @class = "form-control selectManipulation" })
-            </div>
-            <div class="form-group">
-                @Html.DropDownList("MasterId", Model.MastersList, new { @class = "form-control" })
-            </div>
-            <button type="submit" class="btn btn-warning">Записаться</button>
-        </div>
+        }
     }
     <div class="col-md-4 col-sm-6 mainImg">
-        <img src="http://via.placeholder.com/350x250" alt="Alternate Text" />
+        <img src="~/Images/main.jpeg" alt="Alternate Text" />
     </div>
     <div class="col-md-4 col-sm-12">
-        <p class="text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <p class="text-justify">NailStudio – новомодная студия ногтевого сервиса в городе Харьков. Здесь работают профессиональные, сертифицированные мастера маникюра и педикюра, которые с радостью украсят ноготки модными дизайнами и эффектами. Мы умеем делать ногти, мы умеем делать красиво, мы умеем делать качественно, мы слышим клиента. У нас картинка ожидания совпадает с реальностью. От нас ты уйдёшь с результатом лучше, чем ожидала. Мы сделаем всё для того, чтобы твои ногти были ИДЕАЛЬНЫ. У нас всё для ногтей, ради ногтей и во благо ногтей.</p>
     </div>
 </main>
 
 <script>
     var options = {
         twentyFour: true,
-        now: "00:00"
+        now: "00:00",
+        title: ''
     };
 
     $('#StartTime').wickedpicker(options);

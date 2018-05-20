@@ -149,6 +149,9 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Images\default.png" />
     <Content Include="Images\logo.ico" />
+    <Content Include="Images\main.jpeg" />
+    <Content Include="Images\contacts.jpg" />
+    <Content Include="Images\price.jpeg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Data\contact.json" />

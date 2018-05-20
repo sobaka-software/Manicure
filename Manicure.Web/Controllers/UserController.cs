@@ -75,6 +75,7 @@ namespace Manicure.Web.Controllers
 
         [HttpGet]
         [Route("master/register")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult RegisterMaster()
         {
             return View();
@@ -82,6 +83,7 @@ namespace Manicure.Web.Controllers
 
         [HttpPost]
         [Route("master/register")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult RegisterMaster(UserViewModel user)
         {
             if (!ModelState.IsValid)
@@ -116,6 +118,7 @@ namespace Manicure.Web.Controllers
 
         [HttpGet]
         [Route("profile")]
+        [Authorize]
         public ActionResult UserProfile()
         {
             var user = _userService.GetCurrent(User.Identity.Name);

@@ -30,6 +30,7 @@ namespace Manicure.Web.Controllers
 
         [Route("update")]
         [HttpPost]
+        [Authorize(Roles = "Master,Administrator")]
         public ActionResult Update(ProcedureViewModel procedure)
         {
             var procedureToAdd = Mapper.Map<ProcedureViewModel, Procedure>(procedure);
@@ -41,6 +42,7 @@ namespace Manicure.Web.Controllers
 
         [Route("delete")]
         [HttpGet]
+        [Authorize(Roles = "Master,Administrator")]
         public ActionResult Delete(int id)
         {
             _procedureService.Delete(id);

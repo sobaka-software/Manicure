@@ -34,6 +34,7 @@ namespace Manicure.Web.Controllers
                 var master = masters.FirstOrDefault(u => u.User.UserId == masterToShow.UserId);
                 masterToShow.Description = master.Description;
                 masterToShow.Photo = master.Photo;
+                masterToShow.ExampleWorks = master.ExampleWorks;
             }
 
             return View(mastersToShow);

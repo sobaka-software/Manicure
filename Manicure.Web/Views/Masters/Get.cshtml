@@ -5,6 +5,8 @@
 }
 
 <main class="main mastersContainer">
+    @if (Model != null && Model.Any())
+    {
         <h2 class="text-center">Здесь Вы можете познакомиться с нашими мастерами:</h2>
         <div class="mastersList row">
             @foreach (var master in Model)
@@ -24,18 +26,26 @@
                             <p>@master.Description</p>
                         </div>
                     </div>
-                    <div class="gallery gallery-masters col-sm-12">
-                        <div><img src="http://via.placeholder.com/250x250" alt="1" /><p class="image-description">Lorem ipsum dolor sit.</p></div>
-                        <div><img src="http://via.placeholder.com/350x250" alt="2" /><p class="image-description"> Lorem ipsum dolor sit amet.</p></div>
-                        <div><img src="http://via.placeholder.com/350x250" alt="3" /><p class="image-description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
-                        <div><img src="http://via.placeholder.com/350x250" alt="4" /><p class="image-description">Lorem ipsum dolor sit.</p></div>
-                        <div><img src="http://via.placeholder.com/350x250" alt="5" /><p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
-                        <div><img src="http://via.placeholder.com/350x250" alt="6" /><p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
-                        <div><img src="http://via.placeholder.com/350x250" alt="7" /><p class="image-description">Lorem ipsum dolor sit.</p></div>
-                    </div>
+                    @if (master.ExampleWorks != null && master.ExampleWorks.Any())
+                    {
+                        <div class="gallery gallery-masters col-sm-12">
+                            @foreach (var work in master.ExampleWorks)
+                            {
+                                var workbase64 = Convert.ToBase64String(work.Photo);
+                                var workimgSrc = string.Format("data:image/gif;base64,{0}", workbase64);
+                                <div>
+                                    <img src="@workimgSrc" alt="1" />
+                                    <p class="image-description">@work.Description</p>
+                                </div>
+                            }
+                        </div>
+                    }
                 </div>
             }
         </div>
-
-    
+    }
+    else
+    {
+        <div class="text-center h3">Мастеров нет</div>
+    }
 </main>

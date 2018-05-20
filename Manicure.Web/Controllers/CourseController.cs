@@ -32,6 +32,7 @@ namespace Manicure.Web.Controllers
 
         [HttpPost]
         [Route("add")]
+        [Authorize(Roles = "Master")]
         public ActionResult Add(CourseViewModel course)
         {
             var courseToAdd = Mapper.Map<CourseViewModel, Course>(course);
@@ -56,6 +57,7 @@ namespace Manicure.Web.Controllers
 
         [HttpGet]
         [Route("master/delete")]
+        [Authorize(Roles = "Master")]
         public ActionResult DeleteCourse(int id)
         {
             _courseService.CourseDelete(id);

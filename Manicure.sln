@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manicure.BusinessLogic", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manicure.Dependencies", "Manicure.Dependencies\Manicure.Dependencies.csproj", "{247D7601-0416-4EFF-99FF-CDD01FACD8CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manicure.Tests", "Manicure.Tests\Manicure.Tests.csproj", "{FC03F567-E9B4-4B98-BA1E-0E1B7C767EFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{247D7601-0416-4EFF-99FF-CDD01FACD8CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{247D7601-0416-4EFF-99FF-CDD01FACD8CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{247D7601-0416-4EFF-99FF-CDD01FACD8CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC03F567-E9B4-4B98-BA1E-0E1B7C767EFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC03F567-E9B4-4B98-BA1E-0E1B7C767EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC03F567-E9B4-4B98-BA1E-0E1B7C767EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC03F567-E9B4-4B98-BA1E-0E1B7C767EFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

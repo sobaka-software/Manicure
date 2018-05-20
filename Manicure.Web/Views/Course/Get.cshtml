@@ -6,96 +6,106 @@
 
 
 <main class="main row">
-    @foreach (var course in Model)
+    @if (Model != null && Model.Any())
     {
-        <div class="col-sm-12 col-md-6">
-            <div class="courseEntryForm">
-                <div class="clearfix">
-                    <h3 class="courseTitle text-center">@course.CourseName</h3>
-                </div>
-                <div class="courseInner clearfix">
-                    <div class="form-group clearfix">
-                        <strong class="pull-left">Описание</strong>
-                        <p class="pull-right">@course.Description</p>
+        foreach (var course in Model)
+        {
+            <div class="col-sm-12 col-md-6">
+                <div class="courseEntryForm">
+                    <div class="clearfix">
+                        <h3 class="courseTitle text-center">@course.CourseName</h3>
                     </div>
-                    <div class="form-group clearfix">
-                        <strong class="pull-left">Мастер</strong>
-                        <p class="pull-right">@course.Master.User.FirstName @course.Master.User.LastName</p>
-                    </div>
-                    <div class="form-group clearfix">
-                        <strong class="pull-left">Диплом</strong>
-                        <p class="pull-right">@(course.HasDiploma ? "есть" : "нет")</p>
-                    </div>
-                    <div class="form-group clearfix">
-                        <strong class="pull-left">Дата</strong>
-                        <p class="pull-right">С @course.StartDate.ToShortDateString() по @course.EndDate.ToShortDateString()</p>
-                    </div>
-                    <div class="form-group clearfix">
-                        <strong class="pull-left">Цена <span>@course.Cost грн</span></strong>
-                        <span class="icon-users pull-right" aria-hidden="true">@course.MaxNumberOfPeople</span>
-                    </div>
-                    <div class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3">
-                        @Html.ActionLink("Записаться", "RequestCourse", new { id = course.CourseId }, new { @class = "btn btn-warning btnCourseEntry" })
-                        @Html.ActionLink("Удалить", "DeleteCourse", new { id = course.CourseId }, new { @class = "btn btn-warning btnCourseEntry" })
+                    <div class="courseInner clearfix">
+                        <div class="form-group clearfix">
+                            <strong class="pull-left">Описание</strong>
+                            <p class="pull-right">@course.Description</p>
+                        </div>
+                        <div class="form-group clearfix">
+                            <strong class="pull-left">Мастер</strong>
+                            <p class="pull-right">@course.Master.User.FirstName @course.Master.User.LastName</p>
+                        </div>
+                        <div class="form-group clearfix">
+                            <strong class="pull-left">Диплом</strong>
+                            <p class="pull-right">@(course.HasDiploma ? "есть" : "нет")</p>
+                        </div>
+                        <div class="form-group clearfix">
+                            <strong class="pull-left">Дата</strong>
+                            <p class="pull-right">С @course.StartDate.ToShortDateString() по @course.EndDate.ToShortDateString()</p>
+                        </div>
+                        <div class="form-group clearfix">
+                            <strong class="pull-left">Цена <span>@course.Cost грн</span></strong>
+                            <span class="icon-users pull-right" aria-hidden="true">@course.MaxNumberOfPeople</span>
+                        </div>
+                        <div class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3">
+                            @Html.ActionLink("Записаться", "RequestCourse", new { id = course.CourseId }, new { @class = "btn btn-warning btnCourseEntry" })
+                            @Html.ActionLink("Удалить", "DeleteCourse", new { id = course.CourseId }, new { @class = "btn btn-warning btnCourseEntry" })
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
     }
-    <div class="col-sm-12 text-center">
-        <a class="btn btn-lg btn-success btnAddField">Добавить</a>
-    </div>
-
-    @using (Html.BeginForm("Add", "Course"))
+    else
     {
-        @Html.Hidden("Id", "")
-        <div class="addField col-sm-6 col-sm-offset-3">
-            <div class="form-group">
-                <label for="Address">
-                    Название курса:
-                </label>
-                @Html.Editor("CourseName", new { htmlAttributes = new { @class = "form-control", placeholder = "Введите название курса" } })
-            </div>
-            <div class="form-group">
-                <label for="Link">
-                    Стоимость:
-                </label>
-                @Html.Editor("Cost", new { htmlAttributes = new { @class = "form-control", placeholder = "Введите стоимость", type = "text" } })
-            </div>
-            <div class="form-group">
-                <label for="Address">
-                    Описание:
-                </label>
-                @Html.Editor("Description", new { htmlAttributes = new { @class = "form-control", placeholder = "Введите описание" } })
-            </div>
-            <div class="form-group">
-                <label for="Address">
-                    Начальная дата:
-                </label>
-                @Html.Editor("StartDate", new { htmlAttributes = new { @class = "form-control", type = "date" } })
-            </div>
-            <div class="form-group">
-                <label for="Address">
-                    Конечная дата:
-                </label>
-                @Html.Editor("EndDate", new { htmlAttributes = new { @class = "form-control", type = "date" } })
-            </div>
-            <div class="form-group">
-                <label for="Address">
-                    Есть диплом:
-                </label>
-                @Html.CheckBox("HasDiploma", new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-            <div class="form-group">
-                <label for="Address">
-                    Количество людей:
-                </label>
-                @Html.Editor("MaxNumberOfPeople", new { htmlAttributes = new { @class = "form-control", placeholder = "Введите количество людей" } })
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-warning btn-add" value="Принять" />
-                <input type="reset" class="btn btn-danger btn-delete" value="Очистить" />
-            </div>
+        <div class="text-center h3">Курсов нет</div>
+    }
+    @if (User.IsInRole("Master"))
+    {
+        <div class="col-sm-12 text-center">
+            <a class="btn btn-lg btn-success btnAddField">Добавить</a>
         </div>
+
+        using (Html.BeginForm("Add", "Course"))
+        {
+            @Html.Hidden("Id", "")
+            <div class="addField col-sm-6 col-sm-offset-3">
+                <div class="form-group">
+                    <label for="Address">
+                        Название курса:
+                    </label>
+                    @Html.Editor("CourseName", new { htmlAttributes = new { @class = "form-control", placeholder = "Введите название курса" } })
+                </div>
+                <div class="form-group">
+                    <label for="Link">
+                        Стоимость:
+                    </label>
+                    @Html.Editor("Cost", new { htmlAttributes = new { @class = "form-control", placeholder = "Введите стоимость", type = "text" } })
+                </div>
+                <div class="form-group">
+                    <label for="Address">
+                        Описание:
+                    </label>
+                    @Html.Editor("Description", new { htmlAttributes = new { @class = "form-control", placeholder = "Введите описание" } })
+                </div>
+                <div class="form-group">
+                    <label for="Address">
+                        Начальная дата:
+                    </label>
+                    @Html.Editor("StartDate", new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                </div>
+                <div class="form-group">
+                    <label for="Address">
+                        Конечная дата:
+                    </label>
+                    @Html.Editor("EndDate", new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                </div>
+                <div class="form-group">
+                    <label for="Address">
+                        Есть диплом:
+                    </label>
+                    @Html.CheckBox("HasDiploma", new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="form-group">
+                    <label for="Address">
+                        Количество людей:
+                    </label>
+                    @Html.Editor("MaxNumberOfPeople", new { htmlAttributes = new { @class = "form-control", placeholder = "Введите количество людей" } })
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-warning btn-add" value="Принять" />
+                    <input type="reset" class="btn btn-danger btn-delete" value="Очистить" />
+                </div>
+            </div>
+        }
     }
 </main>

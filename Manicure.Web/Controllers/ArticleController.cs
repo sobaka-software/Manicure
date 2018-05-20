@@ -26,6 +26,7 @@ namespace Manicure.Web.Controllers
 
         [HttpPost]
         [Route("update")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Update(Article article)
         {
             _articleService.Update(article);
@@ -35,6 +36,7 @@ namespace Manicure.Web.Controllers
 
         [HttpGet]
         [Route("delete")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(Guid id)
         {
             _articleService.Delete(id);

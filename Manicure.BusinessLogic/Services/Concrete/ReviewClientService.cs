@@ -35,5 +35,11 @@ namespace Manicure.BusinessLogic.Services.Concrete
         {
             return _reviewClientRepository.GetAll();
         }
+
+        public void Delete(int id)
+        {
+            _reviewClientRepository.Delete(id);
+            _unitOfWork.SaveChanges();
+        }
     }
 }

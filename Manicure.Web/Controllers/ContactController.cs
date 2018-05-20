@@ -25,6 +25,7 @@ namespace Manicure.Web.Controllers
 
         [HttpPost]
         [Route("update")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Update(Contact contact)
         {
             _contactService.Update(contact);

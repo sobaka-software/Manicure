@@ -31,11 +31,22 @@ namespace Manicure.Web.Controllers
 
         [HttpPost]
         [Route("add")]
+        [Authorize(Roles = "Client")]
         public ActionResult Add(ReviewViewModel userReview)
         {
             var reviewEntity = Mapper.Map<ReviewViewModel, ReviewClient>(userReview);
 
             _reviewClientService.Add(reviewEntity, User.Identity.Name);
+
+            return RedirectToAction("Get");
+        }
+
+        [HttpGet]
+        [Route("delete")]
+        [Authorize(Roles = "Administrator")]
+        public ActionResult Delete(int id)
+        {
+            _reviewClientService.Delete(id);
 
             return RedirectToAction("Get");
         }

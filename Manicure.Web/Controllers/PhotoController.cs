@@ -33,6 +33,7 @@ namespace Manicure.Web.Controllers
 
         [HttpPost]
         [Route("diploma/add")]
+        [Authorize(Roles = "Master")]
         public ActionResult AddDiploma(DiplomaViewModel diploma)
         {
             var user = _userService.GetCurrent(User.Identity.Name);
@@ -57,6 +58,7 @@ namespace Manicure.Web.Controllers
 
         [HttpPost]
         [Route("example-work/add")]
+        [Authorize(Roles = "Master")]
         public ActionResult AddExampleWork(ExampleWorkViewModel exampleWork)
         {
             var user = _userService.GetCurrent(User.Identity.Name);
@@ -77,6 +79,7 @@ namespace Manicure.Web.Controllers
 
         [HttpGet]
         [Route("example-work/delete")]
+        [Authorize(Roles = "Master")]
         public ActionResult DeleteExampleWork(int id)
         {
             _photoService.DeleteExampleWork(id);
@@ -86,6 +89,7 @@ namespace Manicure.Web.Controllers
 
         [HttpGet]
         [Route("diploma/delete")]
+        [Authorize(Roles = "Master")]
         public ActionResult DeleteDiploma(int id)
         {
             _photoService.DeleteDiploma(id);
