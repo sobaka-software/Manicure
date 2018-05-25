@@ -8,5 +8,7 @@ namespace Manicure.BusinessLogic.Services.Abstract
         void Add(Master master, string userLogin);
 
         IEnumerable<Master> GetAll();
+
+        Master GetBy(int id);
     }
 }

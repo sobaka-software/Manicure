@@ -42,5 +42,10 @@ namespace Manicure.BusinessLogic.Services.Concrete
         {
             return _masterRepository.GetAll();
         }
+
+        public Master GetBy(int id)
+        {
+            return _masterRepository.GetFirst(m => m.MasterId == id);
+        }
     }
 }

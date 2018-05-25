@@ -71,5 +71,10 @@ namespace Manicure.BusinessLogic.Services.Concrete
             _procedureEntryRepository.Delete(id);
             _unitOfWork.SaveChanges();
         }
+
+        public IEnumerable<Procedure> GetBy(int masterId)
+        {
+            return null;
+        }
     }
 }

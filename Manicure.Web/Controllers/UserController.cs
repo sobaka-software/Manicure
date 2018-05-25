@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using Manicure.BusinessLogic.Authentication;
@@ -123,14 +125,20 @@ namespace Manicure.Web.Controllers
         {
             var user = _userService.GetCurrent(User.Identity.Name);
 
+
             var userToShow = Mapper.Map<User, UserProfileViewModel>(user);
 
             if (string.Equals(user.Role, "Master", StringComparison.CurrentCultureIgnoreCase))
             {
+                var procedureEntries = new List<ProcedureEntry>();
+                procedureEntries.AddRange(
+                    user.Master.Schedules.SelectMany(a => a.ProcedureEntries));
+
                 userToShow.Diplomas = user.Master.Diplomas;
                 userToShow.Description = user.Master.Description;
                 userToShow.Photo = user.Master.Photo;
                 userToShow.ExampleWorks = user.Master.ExampleWorks;
+                userToShow.ProcedureEntries = procedureEntries;
             }
             else
             {

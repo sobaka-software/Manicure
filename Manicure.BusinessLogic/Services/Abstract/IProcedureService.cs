@@ -13,5 +13,7 @@ namespace Manicure.BusinessLogic.Services.Abstract
         void Update(Procedure procedure);
 
         void Delete(int id);
+
+        IEnumerable<Procedure> GetBy(int masterId);
     }
 }

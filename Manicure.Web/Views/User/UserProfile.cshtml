@@ -40,7 +40,7 @@
                     <ol class="userList">
                         @foreach (var proc in Model.ProcedureEntries)
                         {
-                            <li>@proc.Procedure.ProcedureName @Html.ActionLink("Отменить", "Delete", "Procedure", new { id = proc.ProcedureId }, null)</li>
+                            <li>@proc.Procedure.ProcedureName @proc.Schedule.Date.ToShortDateString() @proc.Schedule.StartTime.ToShortTimeString() - @proc.Schedule.EndTime.ToShortTimeString() @Html.ActionLink("Отменить", "Delete", "Procedure", new { id = proc.EntryId }, null)</li>
                         }
                     </ol>
                 }
