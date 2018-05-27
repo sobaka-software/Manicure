@@ -14,13 +14,11 @@ namespace Manicure.Web.Controllers
     public class ProcedureController : Controller
     {
         private readonly IProcedureService _procedureService;
-        private readonly IUserService _userService;
         private readonly IMasterService _masterService;
 
-        public ProcedureController(IProcedureService procedureService, IUserService userService, IMasterService masterService)
+        public ProcedureController(IProcedureService procedureService, IMasterService masterService)
         {
             _procedureService = procedureService;
-            _userService = userService;
             _masterService = masterService;
         }
 
@@ -29,8 +27,16 @@ namespace Manicure.Web.Controllers
         public ActionResult Add(ProcedureEntryViewModel procedure)
         {
             var master = _masterService.GetBy(procedure.MasterId);
+            var requestedProcedure = _procedureService.Get().FirstOrDefault(p => p.ProcedureId == procedure.ProcedureId);
+            var requestedProcedureTimeStart = (procedure.Date + procedure.StartTime.TimeOfDay).TimeOfDay;
+            var requestedProcedureTimeEnd = (procedure.Date + procedure.StartTime.AddHours(requestedProcedure.Duration).TimeOfDay).TimeOfDay;
 
-            var procedureDateTime = procedure.Date + procedure.StartTime.TimeOfDay;
+            if (procedure.Date + procedure.StartTime.TimeOfDay < DateTime.Now)
+            {
+                TempData["Message"] = "Выберите дату и время не раньше текущей";
+
+                return RedirectToAction("Main", "Home");
+            }
 
             var procedureEntries = new List<ProcedureEntry>();
             procedureEntries.AddRange(
@@ -38,27 +44,31 @@ namespace Manicure.Web.Controllers
 
             var procedures = procedureEntries.Select(d => d.Schedule);
 
-            var dateBefore = procedureEntries.Where(p => p.Schedule.Date == procedure.Date && p.Schedule.== procedure.Date)
-
             foreach (var masterProcedure in procedures)
             {
-                var procedureDateTimeStart = masterProcedure.Date + masterProcedure.StartTime.TimeOfDay;
+                var procedureTimeStart = (masterProcedure.Date + masterProcedure.StartTime.TimeOfDay).TimeOfDay;
 
-                var procedureDateTimeEnd = masterProcedure.Date + masterProcedure.EndTime.TimeOfDay;
-                
-                if (procedureDateTime >= procedureDateTimeStart && procedureDateTime <= procedureDateTimeEnd)
+                var procedureTimeEnd = (masterProcedure.Date + masterProcedure.EndTime.TimeOfDay).TimeOfDay;
+
+                if (masterProcedure.Date.Date == procedure.Date.Date &&
+                    requestedProcedureTimeStart >= procedureTimeStart && requestedProcedureTimeStart <= procedureTimeEnd &&
+                    requestedProcedureTimeEnd >= procedureTimeStart && requestedProcedureTimeEnd >= procedureTimeEnd)
                 {
-                    TempData["Message"] = "Мастер занят в это время";
+                    TempData["Message"] = "Мастер занят в это время, вы можете просмотреть <a id='modal'>его расписание</a>";
+
+                    TempData["MasterSchedule"] = master.Schedules.Where(s => s.Date.Date == procedure.Date.Date);
 
                     return RedirectToAction("Main", "Home");
                 }
             }
 
             var procedureToAdd = Mapper.Map<ProcedureEntryViewModel, ProcedureDto>(procedure);
-            
+
             procedureToAdd.ClientLogin = User.Identity.Name;
 
             _procedureService.Add(procedureToAdd);
+
+            TempData["Message"] = "Ваша запись принята";
 
             return RedirectToAction("Main", "Home");
         }

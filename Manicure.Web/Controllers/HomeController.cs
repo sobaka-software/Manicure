@@ -28,7 +28,13 @@ namespace Manicure.Web.Controllers
                 ProceduresList = MakeProceduresList()
             };
 
-            return View(controls);
+            var scheduleWothControls = new CompositeHomeViewModel
+            {
+                Controls = controls,
+                MasterSchedule = TempData["MasterSchedule"] as IEnumerable<Schedule>
+            };
+
+           return View(scheduleWothControls);
         }
 
         private SelectList MakeProceduresList()

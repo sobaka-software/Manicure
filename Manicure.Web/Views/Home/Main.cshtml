@@ -1,4 +1,4 @@
-﻿@model ControlDataViewModel
+﻿@model CompositeHomeViewModel
 
 @{
     ViewBag.Title = "Main";
@@ -13,7 +13,7 @@
         {
             <div class="formInner">
                 <div class="form-group">
-                    <h3 class="form-title">@TempData["Message"] Онлайн запись</h3>
+                    <h3 class="form-title">Онлайн запись</h3>
                 </div>
                 <div class="form-group">
                 </div>
@@ -22,12 +22,16 @@
                     @Html.Editor("StartTime", new { htmlAttributes = new { @class = "form-control", type = "text", placeholder = "Введите время" } })
                 </div>
                 <div class="form-group">
-                    @Html.DropDownList("ProcedureId", Model.ProceduresList, new { @class = "form-control selectManipulation" })
+                    @Html.DropDownList("ProcedureId", Model.Controls.ProceduresList, new { @class = "form-control selectManipulation" })
                 </div>
                 <div class="form-group">
-                    @Html.DropDownList("MasterId", Model.MastersList, new { @class = "form-control" })
+                    @Html.DropDownList("MasterId", Model.Controls.MastersList, new { @class = "form-control" })
                 </div>
                 <button type="submit" class="btn btn-warning">Записаться</button>
+            </div>
+            <br/>
+            <div class="form-group">
+                <h3 class="form-title text-center">@Html.Raw(TempData["Message"])</h3>
             </div>
         }
         else
@@ -47,6 +51,29 @@
     </div>
 </main>
 
+@if (Model.MasterSchedule != null && Model.MasterSchedule.Any())
+{
+    <div class="modal fade" id="schedule" tabindex="-1" role="dialog" aria-labelledby="ScheduleLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Расписание мастера на @Model.MasterSchedule.First().Date.ToShortDateString() </h4>
+                </div>
+                <div class="modal-body text-center">
+                    @foreach (var schedule in Model.MasterSchedule.OrderBy(t => t.StartTime.TimeOfDay.TotalMinutes))
+                    {
+                        <b>@schedule.StartTime.ToShortTimeString() - @schedule.EndTime.ToShortTimeString()  Занято</b><br />
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
 <script>
     var options = {
         twentyFour: true,
@@ -55,4 +82,16 @@
     };
 
     $('#StartTime').wickedpicker(options);
+
+    $('#modal').click(function () {
+        $('#modal').attr('data-target', '#schedule')
+            .attr('data-toggle', 'modal')
+            .attr('data-dismiss', 'modal')
+            .attr('data-backdrop', false);
+
+        $('#modal').modal({
+            keyboard: true
+        },
+            'show');
+    });
 </script>
