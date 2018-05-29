@@ -35,6 +35,7 @@ namespace Manicure.Web.Controllers
                 masterToShow.Description = master.Description;
                 masterToShow.Photo = master.Photo;
                 masterToShow.ExampleWorks = master.ExampleWorks;
+                masterToShow.Diplomas = master.Diplomas;
             }
 
             return View(mastersToShow);

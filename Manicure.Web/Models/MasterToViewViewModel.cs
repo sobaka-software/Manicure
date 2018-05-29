@@ -18,5 +18,7 @@ namespace Manicure.Web.Models
         public byte[] Photo { get; set; }
 
         public virtual ICollection<ExampleWork> ExampleWorks { get; set; }
+
+        public virtual ICollection<Diploma> Diplomas { get; set; }
     }
 }

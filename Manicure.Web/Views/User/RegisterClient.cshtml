@@ -1,9 +1,5 @@
 ﻿@model UserViewModel
 
-@{
-    ViewBag.Title = "RegisterClient";
-}
-
 <main class="main">
     @using (Html.BeginForm("RegisterClient", "User", FormMethod.Post, new { @class = "registrNewForm col-xs-12 col-sm-6 col-md-6 col-lg-4", enctype = "multipart/form-data" }))
     {

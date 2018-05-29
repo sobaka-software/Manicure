@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MasterToViewViewModel>
 
 @{
-    ViewBag.Title = "Get";
+    var num = 0;
 }
 
 <main class="main mastersContainer">
@@ -11,6 +11,7 @@
         <div class="mastersList row">
             @foreach (var master in Model)
             {
+                num++;
                 var base64 = Convert.ToBase64String(master.Photo);
                 var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
                 <div class="col-lg-6 masterItem clearfix">
@@ -24,6 +25,7 @@
                             <p>@master.PhoneNumber</p>
                             <p>Краткое описание:</p>
                             <p>@master.Description</p>
+                            <a class="btn btn-warning btn-add" data-toggle="modal" data-target="@("#diplomas" + num)">Показать дипломы</a>
                         </div>
                     </div>
                     @if (master.ExampleWorks != null && master.ExampleWorks.Any())
@@ -40,6 +42,32 @@
                             }
                         </div>
                     }
+                </div>
+
+                <div class="modal fade" id="@("diplomas" + num)" tabindex="-1" role="dialog" aria-labelledby="ScheduleLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Дипломы</h4>
+                            </div>
+                            <div class="modal-body text-center">
+                                <div class="gallery gallery-masters col-sm-12">
+                                    @foreach (var diploma in master.Diplomas)
+                                    {
+                                        var workbase64 = Convert.ToBase64String(diploma.ScanDiploma);
+                                        var workimgSrc = string.Format("data:image/gif;base64,{0}", workbase64);
+                                        <div>
+                                            <img src="@workimgSrc" alt="1" />
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             }
         </div>

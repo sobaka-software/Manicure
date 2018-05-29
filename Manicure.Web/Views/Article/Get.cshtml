@@ -1,9 +1,5 @@
 ﻿@model IEnumerable<Article>
 
-@{
-    ViewBag.Title = "Get";
-}
-
 <main class="main">
     <div class="articleList col-sm-12 text-center">
         @if (Model.Any())
@@ -11,11 +7,11 @@
             foreach (var article in Model)
             {
                 <div class="articleItem clearfix">
-                    <a href="@article.Link" class="articleLink col-sm-7 col-md-8">@article.Name</a>
+                    <a id="modal" data-head="@article.Name" data-text="@article.Text" class="articleLink col-sm-7 col-md-8">@article.Name</a>
                     @if (User.IsInRole("Administrator"))
                     {
                         <div class="btn-holder col-sm-5 col-md-4 col-xs-12 text-right">
-                            <a class="btn btn-warning btnAddField" onclick="setForUpdate('@article.Id', '@article.Name', '@article.Link')">Редактировать</a>
+                            <a class="btn btn-warning btnAddField" onclick="setForUpdate('@article.Id', '@article.Name', '@article.Text')">Редактировать</a>
                             @Html.ActionLink("Удалить", "Delete", new { id = article.Id }, new { @class = "btn btn-danger" })
                         </div>
                     }
@@ -47,7 +43,7 @@
                         <label for="Link">
                             Ссылка:
                         </label>
-                        @Html.Editor("Link", new { htmlAttributes = new { @class = "form-control", placeholder = "Введите ссылку" } })
+                        @Html.TextArea("Text", new { @class = "form-control", placeholder = "Введите текст", style = "resize: none;" })
                     </div>
                     <div class="form-group">
                         <input type="submit" class="btn btn-warning btn-add" value="Принять" />
@@ -59,10 +55,44 @@
     </div>
 </main>
 
+<div class="modal fade" id="article" tabindex="-1" role="dialog" aria-labelledby="ScheduleLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body text-justify" id="textModal">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     function setForUpdate(id, name, link) {
         $('[name="Id"]').val(id);
         $('[name="Name"]').val(name);
         $('[name="Link"]').val(link);
     }
+
+    $('[id="modal"]').click(function () {
+        $(this).attr('data-target', '#article')
+            .attr('data-toggle', 'modal')
+            .attr('data-dismiss', 'modal')
+            .attr('data-backdrop', false);
+
+        var text = $(this).attr('data-text');
+        var header = $(this).attr('data-head');
+
+        $('#textModal').html(text);
+        $('#myModalLabel').html(header);
+
+        $(this).modal({
+            keyboard: true
+        },
+            'show');
+    });
 </script>

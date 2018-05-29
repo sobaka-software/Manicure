@@ -1,9 +1,5 @@
 ﻿@model CompositeHomeViewModel
 
-@{
-    ViewBag.Title = "Main";
-}
-
 <main class="main">
     <h1 class="main-title text-center">Добро пожаловать в студию ногтевого сервиса “NailStudio”</h1>
 
@@ -84,12 +80,12 @@
     $('#StartTime').wickedpicker(options);
 
     $('#modal').click(function () {
-        $('#modal').attr('data-target', '#schedule')
+        $(this).attr('data-target', '#schedule')
             .attr('data-toggle', 'modal')
             .attr('data-dismiss', 'modal')
             .attr('data-backdrop', false);
 
-        $('#modal').modal({
+        $(this).modal({
             keyboard: true
         },
             'show');

@@ -1,10 +1,5 @@
 ﻿@model IEnumerable<CourseViewModel>
 
-@{
-    ViewBag.Title = "Get";
-}
-
-
 <main class="main row">
     @if (Model != null && Model.Any())
     {
@@ -37,8 +32,14 @@
                             <span class="icon-users pull-right" aria-hidden="true">@course.MaxNumberOfPeople</span>
                         </div>
                         <div class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3">
-                            @Html.ActionLink("Записаться", "RequestCourse", new { id = course.CourseId }, new { @class = "btn btn-warning btnCourseEntry" })
-                            @Html.ActionLink("Удалить", "DeleteCourse", new { id = course.CourseId }, new { @class = "btn btn-warning btnCourseEntry" })
+                            @if (User.IsInRole("Client"))
+                            {
+                                @Html.ActionLink("Записаться", "RequestCourse", new { id = course.CourseId }, new { @class = "btn btn-warning btnCourseEntry" })
+                            }
+                            @if (User.IsInRole("Master"))
+                            {
+                                @Html.ActionLink("Удалить", "DeleteCourse", new { id = course.CourseId }, new { @class = "btn btn-warning btnCourseEntry" })
+                            }
                         </div>
                     </div>
                 </div>
